@@ -1,0 +1,3 @@
+Endpoints
+
+desc	url		params		GET/POST/PUT
