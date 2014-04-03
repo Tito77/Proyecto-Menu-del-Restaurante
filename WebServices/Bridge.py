@@ -6,9 +6,9 @@
 #David Montero
 #Emanuel Avendano
 
-class Constantes:
+import Business.GIngredienteCtrl
+class Bridge:
+
 	def __init__(self):
-		self.mOperacionSelect="SEL"
-		self.mOperacionInsert="INS"
-		self.mOperacionUpdate="UPD"
-		self.mOperacionDelete="DEL"
+		self.mOperation = -1
+		self.mControl = Business.GIngredienteCtrl.GIngredienteCtrl()
