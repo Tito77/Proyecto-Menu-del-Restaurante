@@ -7,8 +7,27 @@
 #Emanuel Avendano
 
 import Business.GIngredienteCtrl
+import Libraries.Constantes
+
 class Bridge:
 
-	def __init__(self):
-		self.mOperation = -1
-		self.mControl = Business.GIngredienteCtrl.GIngredienteCtrl()
+	def __init__(self,pRequest):
+		self.mOperation = ""
+		self.mModuloExec = ""
+		self.mReturnValue = ""
+		self.mRequest = pRequest
+
+	def GetValue(self):
+			return self.mReturnValue
+
+	def IniciarEjecucion(self):
+		self.mModuloExec = self.mRequest.get('MOD')
+		self.mOperation = self.mRequest.get('EXECOP')
+		if self.mModuloExec == "GI":
+			self.mControl = Business.GIngredienteCtrl.GIngredienteCtrl(self.mRequest)
+			self.mControl.setOperation(self.mOperation)
+			if self.mOperation == Libraries.Constantes.Constantes().mOperacionSelect:
+				self.mReturnValue = self.mControl.Select()
+			else:
+				self.mControl.Execute()
+

@@ -1,23 +1,18 @@
 import cgi
 import urllib
 
-from google.appengine.api import users
 from google.appengine.ext import ndb
 import webapp2
 import Bridge
 
-# Variables
-mOperation = ""
-
 
 class MainPage(webapp2.RequestHandler):
 
-    def get(self):
-        executeOperation = self.request.get('EXECOP',mOperation)
-        self.response.write(executeOperation);
-        b = Bridge.Bridge()
-        self.response.write(b.mControl.mConstantes)
-        self.response.write(b.mControl.mConstantes2.mOperacionSelect)
+	def get(self):
+		executeOperation = self.request.get('EXECOP')
+		b = Bridge.Bridge(self.request)
+		b.IniciarEjecucion()
+		self.response.write(b.mReturnValue)
 
 
 application = webapp2.WSGIApplication([
