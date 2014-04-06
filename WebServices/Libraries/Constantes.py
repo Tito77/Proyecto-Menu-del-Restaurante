@@ -11,3 +11,15 @@ class Constantes:
 	mOperacionInsert="INS"
 	mOperacionUpdate="UPD"
 	mOperacionDelete="DEL"
+
+	#Modulos
+	mModuleIngredientes = "GI"
+	mModulePlatillo = "GP"
+	mModuleMenu = "GM"
+
+
+	#ModuloMenu
+	mGMOperacionAcivar = "ACT"
+	mGMOperacionDesact = "DAC"
+	mGMEstadoActivo = "A"
+	mGMEstadoInactivo = "I"

@@ -6,4 +6,4 @@
 #David Montero
 #Emanuel Avendano
 
-__all__ = ["GIngredienteCtrl""GPlatilloCtrl"]
+__all__ = ["GIngredienteCtrl","GPlatilloCtrl","GMenuCtrl"]

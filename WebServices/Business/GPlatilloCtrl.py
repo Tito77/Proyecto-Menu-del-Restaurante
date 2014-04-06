@@ -62,18 +62,18 @@ class GPlatilloCtrl:
 	def Update(self):
 		# Obtener los parametros para poder actualizarlos
 		self.mReturnValue = "0"
-		nombrereturnValue = str(self.mRequest.get('GPNOM'))
-		caloriareturnValue = str(self.mRequest.get('GPPRE'))
+		nombreValue = str(self.mRequest.get('GPNOM'))
+		precioValue = str(self.mRequest.get('GPPRE'))
 		keyValue = str(self.mRequest.get('GPKEY'))
 		qry = DPlatillo.DPlatillo.query()
 		# Ejecutar el query
 		if keyValue != "":
 			for recPlatillo in qry:
 				if str(recPlatillo.key.id()) == keyValue:					
-					if nombrereturnValue != "":
-						recPlatillo.mNombrePlatillo = nombrereturnValue
-					if caloriareturnValue != "":
-						recPlatillo.mPrecio = caloriareturnValue
+					if nombreValue != "":
+						recPlatillo.mNombrePlatillo = nombreValue
+					if precioValue != "":
+						recPlatillo.mPrecio = precioValue
 					recPlatillo.put()
 					self.mReturnValue = "1"
 		

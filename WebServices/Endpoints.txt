@@ -6,7 +6,7 @@ EXECOP : Parametro para la operacion que se quiere ejecutar
 		 SEL(Select), INS(Insert), UPD(Update), DEL(Delete)
 
 MOD	   : Parametro para la indicacion del Modulo sobre el que se esta trabajando
-		 GI(Gestion de Ingredientes)
+		 GI(Gestion de Ingredientes), GP(Gestion de Platillos), GM(Gestion de Menus)
 
 url															desc					params				GET/POST/PUT
 ?EXECOP=SEL&MOD=GI 											Trae todos los			ninguno				GET
@@ -27,3 +27,50 @@ url															desc					params				GET/POST/PUT
 
 ?EXECOP=DEL&MOD=GI&GIKEY=(llave)							Borra un ingrediente 	GIKEY: Obligatorio	GET
 															de la base			
+-----------------------------------------------------------------------------------------------------------------------
+url															desc					params				GET/POST/PUT
+?EXECOP=SEL&MOD=GP 											Trae todos los			ninguno				GET
+															platillos
+
+?EXECOP=SEL&MOD=GP&GPKEY=(llave)    						Trae la informacion 	GPKEY: llave		GET
+															de un platillo en 		del platillo.
+															especifico
+
+?EXECOP=INS&MOD=GP&GPNOM=(nom)&GPPRE=(pre)					Metodo que inserta un	GPNOM: nombre		GET
+															platillo 				del platillo
+																					GPPRE: precio
+																					del platillo
+
+?EXECOP=UPD&MOD=GP&GPNOM=(nom)&GPPRE=(val)&GPKEY=(llave)	Actualiza los datos		GPNOM: Opcional		GET
+															de un platillo 			GPPRE: Opcional
+																					GPKEY: Obligatorio
+
+?EXECOP=DEL&MOD=GP&GPKEY=(llave)							Borra un platillo 		GPKEY: Obligatorio	GET
+															de la base			
+-----------------------------------------------------------------------------------------------------------------------
+url															desc					params				GET/POST/PUT
+?EXECOP=SEL&MOD=GM 											Trae todos los			ninguno				GET
+															menus
+
+?EXECOP=SEL&MOD=GM&GMKEY=(llave)    						Trae la informacion 	GMKEY: llave		GET
+															de un menu en 			del menu.
+															especifico				(Opcional)
+
+?EXECOP=INS&MOD=GM&GMNOM=(nom)&GMDSC=(dsc)					Metodo que inserta un	GMNOM: nombre		GET
+&GMFIA=(val)&GMFFA=(val)				 					del menu 				GMDSC: descripcion
+																					del menu(ocasion)
+																					GMFIA: feche Inicio
+																					GMFFA: fecha Final
+
+?EXECOP=UPD&MOD=GM&GMNOM=(nom)&GMDSC=(val)&GMKEY=(llave)	Actualiza los datos		GMNOM: Opcional		GET
+&GMFIA=(val)&GMFFA=(val)									de un menu 				GMDSC: Opcional
+																					GMKEY: Obligatorio
+																					GMFIA: Opcional
+																					GMFFA: Opcional
+
+?EXECOP=DEL&MOD=GM&GMKEY=(llave)							Borra un menu 			GMKEY: Obligatorio	GET
+															de la base		
+
+?EXECOP=ACT&MOD=GM&GMKEY=(llave) 							Activar un menu			GMKEY: Obligatorio  GET	
+
+?EXECOP=DAC&MOD=GM&GMKEY=(llave) 							Desactivar un menu		GMKEY: Obligatorio  GET				
