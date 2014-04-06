@@ -23,7 +23,7 @@ class GIngredienteCtrl:
 		self.mNombreIngrediente = ""
 		self.mCalorias = ""
 		self.mkeyValue = ""
-		self.mReturnValue = ""
+		self.mReturnValue = []
 
 	def Execute(self):
 		self.mOperation = str(self.mRequest.get("EXECOP"))

@@ -6,6 +6,7 @@
 #David Montero
 #Emanuel Avendano
 
+import Business.GPlatilloCtrl
 import Business.GIngredienteCtrl
 import Libraries.Constantes
 import Libraries.JsonEncoder
@@ -26,6 +27,12 @@ class Bridge:
 		self.mOperation = self.mRequest.get("EXECOP")
 		if self.mModuloExec == "GI":
 			self.mControl = Business.GIngredienteCtrl.GIngredienteCtrl(self.mRequest)
+			self.mControl.mOperation = self.mOperation
+			self.mControl.Execute()
+			self.mReturnValue['RETURNVALUE'] = self.mControl.GetValue()
+			self.mReturnValue = Libraries.JsonEncoder.JsonEncoder().serializeJson(self.mReturnValue)
+		if self.mModuloExec == "GP":
+			self.mControl = Business.GPlatilloCtrl.GPlatilloCtrl(self.mRequest)
 			self.mControl.mOperation = self.mOperation
 			self.mControl.Execute()
 			self.mReturnValue['RETURNVALUE'] = self.mControl.GetValue()
