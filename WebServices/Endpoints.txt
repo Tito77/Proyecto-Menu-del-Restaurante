@@ -1,3 +1,29 @@
 Endpoints
 
-desc	url		params		GET/POST/PUT
+Descripcion:	
+Gestion de los ingredientes
+EXECOP : Parametro para la operacion que se quiere ejecutar
+		 SEL(Select), INS(Insert), UPD(Update), DEL(Delete)
+
+MOD	   : Parametro para la indicacion del Modulo sobre el que se esta trabajando
+		 GI(Gestion de Ingredientes)
+
+url															desc					params				GET/POST/PUT
+?EXECOP=SEL&MOD=GI 											Trae todos los			ninguno				GET
+															ingredientes
+
+?EXECOP=SEL&MOD=GI&GIKEY=(llave)    						Trae la informacion 	GIKEY: llave		GET
+															de un ingrediente en 	del ingred.
+															especifico
+
+?EXECOP=INS&MOD=GI&GINOM=(nom)&GICAL=(cal)					Metodo que inserta un	GINOM: nombre		GET
+															ingrediente 			del ingrediente
+																					GICAL: calorias
+																					del ingrediente
+
+?EXECOP=UPD&MOD=GI&GINOM=(nom)&GICAL=(val)&GIKEY=(llave)	Actualiza los datos		GINOM: Opcional		GET
+															de un ingrediente 		GICAL: Opcional
+																					GIKEY: Obligatorio
+
+?EXECOP=DEL&MOD=GI&GIKEY=(llave)							Borra un ingrediente 	GIKEY: Obligatorio	GET
+															de la base			

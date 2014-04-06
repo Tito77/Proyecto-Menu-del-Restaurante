@@ -19,45 +19,75 @@ import CIngrediente
 class GIngredienteCtrl:
 	def __init__(self,pRequest):
 		self.mRequest = pRequest
-		self.mOpetation = ""
+		self.mOperation = ""
 		self.mNombreIngrediente = ""
 		self.mCalorias = ""
-		self.mKeyValue = ""
-
-	def setOperation(self,pOperation):
-		if pOperation is str:
-			self.mOpetation = pOperation
+		self.mkeyValue = ""
+		self.mReturnValue = ""
 
 	def Execute(self):
-		constantes = Constantes.Constantes()
-		if self.mOpetation == constantes.mOperacionInsert:
-			self.Insert()
-		if self.mOpetation == constantes.mOperacionSelect:
+		self.mOperation = str(self.mRequest.get("EXECOP"))
+		if self.mOperation == Constantes.Constantes().mOperacionSelect:
 			self.Select()
-		if self.mOpetation == constantes.mOperacionUpdate:
+		if self.mOperation == Constantes.Constantes().mOperacionInsert:
+			self.Insert()
+		if self.mOperation == Constantes.Constantes().mOperacionUpdate:
 			self.Update()
-		if self.mOpetation == constantes.mOperacionDelete:
+		if self.mOperation == Constantes.Constantes().mOperacionDelete:
 			self.Delete()
 
 
 	def Insert(self):
+		self.mReturnValue = "0"
 		dingrediente = DIngrediente.DIngrediente()
 		dingrediente.mNombreIngrediente = self.mRequest.get('GINOM')
 		dingrediente.mCalorias = self.mRequest.get('GICAL')
 		dingrediente.put()
+		self.mReturnValue = "1"
+		
+		
 
 	def Select(self):
 		lstIngredientes = []
-		qry = DIngrediente.DIngrediente.query().order(DIngrediente.DIngrediente.mNombreIngrediente)
+		keyValue = str(self.mRequest.get('GIKEY'))
+		qry = DIngrediente.DIngrediente.query()
 		for recIngrediente in qry:
-			lstIngredientes.append(CIngrediente.CIngrediente(recIngrediente.mNombreIngrediente,recIngrediente.mCalorias,str(recIngrediente.key.id())).jsonSerialize())
-			#lstIngredientes.append(" Key: " + str(recIngrediente.key.id()) + " Ingrediente:  " + recIngrediente.mNombreIngrediente + " Calorias:" + recIngrediente.mCalorias)
-		return lstIngredientes
+			if keyValue != "":
+				if str(recIngrediente.key.id()) == keyValue:
+					lstIngredientes.append(CIngrediente.CIngrediente(str(recIngrediente.mNombreIngrediente),str(recIngrediente.mCalorias),str(recIngrediente.key.id())).jsonSerialize())
+			else :
+				lstIngredientes.append(CIngrediente.CIngrediente(str(recIngrediente.mNombreIngrediente),str(recIngrediente.mCalorias),str(recIngrediente.key.id())).jsonSerialize())
+		self.mReturnValue = lstIngredientes
 
 	def Update(self):
-		qry = DIngrediente.DIngrediente.query().order(DIngrediente.DIngrediente.mNombreIngrediente)
-		for recIngrediente in qry:
-			if str(recIngrediente.key.id()) == self.mKeyValue:
-				recIngrediente.mNombreIngrediente = self.mNombreIngrediente
-				recIngrediente.mCalorias = self.mCalorias
-				recIngrediente.put()
+		# Obtener los parametros para poder actualizarlos
+		self.mReturnValue = "0"
+		nombrereturnValue = str(self.mRequest.get('GINOM'))
+		caloriareturnValue = str(self.mRequest.get('GICAL'))
+		keyValue = str(self.mRequest.get('GIKEY'))
+		qry = DIngrediente.DIngrediente.query()
+		# Ejecutar el query
+		if keyValue != "":
+			for recIngrediente in qry:
+				if str(recIngrediente.key.id()) == keyValue:					
+					if nombrereturnValue != "":
+						recIngrediente.mNombreIngrediente = nombrereturnValue
+					if caloriareturnValue != "":
+						recIngrediente.mCalorias = caloriareturnValue
+					recIngrediente.put()
+					self.mReturnValue = "1"
+		
+
+	def Delete(self):
+		self.mReturnValue = "0"
+		keyValue = str(self.mRequest.get('GIKEY'))
+		qry = DIngrediente.DIngrediente.query()
+		if keyValue != "":
+			for recIngrediente in qry:
+				if str(recIngrediente.key.id()) == keyValue:
+					self.mReturnValue = "1"
+					recIngrediente.key.delete()
+		
+
+	def GetValue(self):
+		return self.mReturnValue

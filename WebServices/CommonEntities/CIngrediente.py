@@ -12,6 +12,9 @@ import JsonEncoder
 
 class CIngrediente:
 	def __init__(self, pNombreIngrediente="", pCalorias="", pKeyValue=""):
+		self.mNombreIngrediente = ""
+		self.mCalorias = ""
+		self.mKeyValue = ""
 		if type(pNombreIngrediente) is str:
 			self.mNombreIngrediente = pNombreIngrediente
 		if type(pCalorias) is str:

@@ -7,8 +7,7 @@
 #Emanuel Avendano
 
 class Constantes:
-	def __init__(self):
-		self.mOperacionSelect="SEL"
-		self.mOperacionInsert="INS"
-		self.mOperacionUpdate="UPD"
-		self.mOperacionDelete="DEL"
+	mOperacionSelect="SEL"
+	mOperacionInsert="INS"
+	mOperacionUpdate="UPD"
+	mOperacionDelete="DEL"

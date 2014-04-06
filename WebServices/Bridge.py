@@ -8,26 +8,26 @@
 
 import Business.GIngredienteCtrl
 import Libraries.Constantes
+import Libraries.JsonEncoder
 
 class Bridge:
 
 	def __init__(self,pRequest):
 		self.mOperation = ""
 		self.mModuloExec = ""
-		self.mReturnValue = ""
 		self.mRequest = pRequest
+		self.mReturnValue = {'RETURNVALUE':""}
 
 	def GetValue(self):
 			return self.mReturnValue
 
 	def IniciarEjecucion(self):
-		self.mModuloExec = self.mRequest.get('MOD')
-		self.mOperation = self.mRequest.get('EXECOP')
+		self.mModuloExec = str(self.mRequest.get('MOD'))
+		self.mOperation = self.mRequest.get("EXECOP")
 		if self.mModuloExec == "GI":
 			self.mControl = Business.GIngredienteCtrl.GIngredienteCtrl(self.mRequest)
-			self.mControl.setOperation(self.mOperation)
-			if self.mOperation == Libraries.Constantes.Constantes().mOperacionSelect:
-				self.mReturnValue = self.mControl.Select()
-			else:
-				self.mControl.Execute()
+			self.mControl.mOperation = self.mOperation
+			self.mControl.Execute()
+			self.mReturnValue['RETURNVALUE'] = self.mControl.GetValue()
+			self.mReturnValue = Libraries.JsonEncoder.JsonEncoder().serializeJson(self.mReturnValue)
 
