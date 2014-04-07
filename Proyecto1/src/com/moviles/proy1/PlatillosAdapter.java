@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.moviles.clases.Platillo;
 import com.moviles.proyecto1.R;
 
 public class PlatillosAdapter extends BaseAdapter {
@@ -39,8 +40,8 @@ public class PlatillosAdapter extends BaseAdapter {
 		TextView viewPrecio = (TextView)root.findViewById(R.id.infoPrecio);
 		
 		Platillo platilloEnFila = getItem(position);
-		viewNombre.setText(platilloEnFila.get_sNombre());
-		viewPrecio.setText(platilloEnFila.get_fPrecio()+"");
+		viewNombre.setText(platilloEnFila.get_sNombre()+":");
+		viewPrecio.setText("₡"+platilloEnFila.get_sPrecio());
 		
 		return root;
 		

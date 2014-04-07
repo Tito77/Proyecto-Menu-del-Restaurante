@@ -1,13 +1,13 @@
 package com.moviles.proy1;
 
-import com.moviles.proyecto1.R;
-
-import android.os.Bundle;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.moviles.proyecto1.R;
 
 public class MainActivity extends Activity {
 
@@ -15,6 +15,9 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		/*StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+	    StrictMode.setThreadPolicy(policy);*/
 		
 		FragmentManager m = getFragmentManager();
 		FragmentTransaction trans = m.beginTransaction();

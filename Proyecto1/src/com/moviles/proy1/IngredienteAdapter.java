@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.moviles.clases.Ingrediente;
 import com.moviles.proyecto1.R;
 
 public class IngredienteAdapter extends ArrayAdapter<Ingrediente>{
@@ -30,7 +31,7 @@ public class IngredienteAdapter extends ArrayAdapter<Ingrediente>{
        TextView tvCalorias = (TextView) convertView.findViewById(R.id.ingredienteCals);
        // Populate the data into the template view using the data object
        tvNombre.setText(_ing.get_sNombre());
-       tvCalorias.setText(_ing.get_fCalorias()+" cals");
+       tvCalorias.setText(_ing.get_sCalorias()+" cals");
        // Return the completed view to render on screen
        return convertView;
    }

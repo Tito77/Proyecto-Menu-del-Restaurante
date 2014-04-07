@@ -10,6 +10,7 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 import android.widget.ListView;
 
+import com.moviles.clases.Platillo;
 import com.moviles.proyecto1.R;
 
 public class InfoPlatilloActivity extends Activity {
@@ -18,6 +19,7 @@ public class InfoPlatilloActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_info_platillo);
+		setTitle("Detalles de platillo");
 		
 		int posPlatillo = getIntent().getExtras().getInt("posicion");
 		Platillo seleccionado = ((CustomContext)getApplicationContext()).lPlatillos.get(posPlatillo);
@@ -25,7 +27,7 @@ public class InfoPlatilloActivity extends Activity {
 		IngredienteAdapter _adapter = new IngredienteAdapter(this, seleccionado.get_lIngredientes());
 		
 		((TextView)findViewById(R.id.txNombre)).setText(seleccionado.get_sNombre());
-		((TextView)findViewById(R.id.txPrecio)).setText(seleccionado.get_fPrecio()+"");
+		((TextView)findViewById(R.id.txPrecio)).setText("Precio: ₡"+seleccionado.get_sPrecio());
 		((ListView)findViewById(R.id.listIngredientes)).setAdapter(_adapter);
 	}
 

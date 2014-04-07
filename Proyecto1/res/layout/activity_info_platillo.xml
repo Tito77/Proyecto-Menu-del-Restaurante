@@ -8,6 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#7F0000"
     tools:context=".InfoPlatilloActivity" >
 
     <TextView
@@ -15,25 +16,57 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nombre"
+        android:textColor="#FFFFFF"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <TextView
-        android:id="@+id/txPrecio"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/layoutImagen"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Precio"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:layout_weight="0.15" >
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="108dp"
-        android:layout_height="108dp"
-        android:src="@drawable/ic_launcher" />
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_placeholder" />
+
+        <TextView
+            android:id="@+id/txPrecio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Precio"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
 
     <ListView
         android:id="@+id/listIngredientes"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="193dp"
+        android:layout_weight="0.30" >
     </ListView>
+
+    <LinearLayout
+        android:id="@+id/layoutButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/buttonOrdenar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ordenar" />
+
+        <Button
+            android:id="@+id/buttonPersonal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Personalizar" />
+    </LinearLayout>
 
 </LinearLayout>
