@@ -15,7 +15,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-        <!--link rel="shortcut icon" href="http://getbootstrap.com/assets/ico/favicon.ico"-->
+        <link rel="shortcut icon" href="../img/Food_Icon_32.png">
 
         <title>Men&uacute;s</title>
 
@@ -61,26 +61,33 @@
         <div class="container">
 
             <div class="page-header">
-              <h1>Ingredientes</h1>
+                <h1>Men&uacute;s</h1>
             </div>
+            <div class="row featurette">
             <div class="col-md-9">
-                <div id="Listadeingredientes">
-                    <h3>Lista de Ingredientes</h3>
+                <div id="ListadeMenus">
+                    <h3>Lista de Men&uacute;s</h3>
                     <table class="table table-hover table-striped table-condensed" id="ingredientes">
                         <thead>
                             <tr>
                                 <th scope="col">Nombre</th>
-                                <th scope="col">Calor&iacute;as</th>
+                                <th scope="col">Descripci&oacute;n</th>
+                                <th scope="col">Fecha de Inicio</th>
+                                <th scope="col">Fecha de Finalizaci&oacute;n</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Chile</td>
-                                <td>40</td>
+                                <td>Almuerzos</td>
+                                <td>Comidas para la hora del almuerzo</td>
+                                <td>07-04-2014</td>
+                                <td>12-04-2014</td>
                             </tr>
                             <tr>
-                                <td>Tomate</td>
-                                <td>55</td>
+                                <td>Asados</td>
+                                <td>Comidas asadas</td>
+                                <td>12-04-2014</td>
+                                <td>14-04-2014</td>
                             </tr>
                         </tbody>
                     </table>
@@ -101,31 +108,56 @@
                     <h3>Editar</h3>
                     <form role="form">
                         <div class="form-group">
-                            <select  class="form-control" id="selectingredientes" onChange="IngredienteSeleccionado()">
-                                <option>Escoger Ingrediente...</option>
-                                <option>Chile</option>
-                                <option>Tomate</option>
+                            <select  class="form-control" id="selectmenu" onChange="MenusSeleccionado()">
+                                <option>Seleccione un Men&uacute;...</option>
+                                <option>Almuerzos</option>
+                                <option>Asados</option>
                             </select>
                     
                         </div>
                     </form>
                     <br>
-                    <form class="form-inline" role="form">
+                    <form id="Componentedeedicion" class="form-inline" role="form">
                         <div class="form-group">
                           <label class="sr-only" for="Name">Nombre</label>
-                          <input type="text" class="form-control" id="Name" placeholder="Nombre del Ingrediente">
+                          <input type="text" class="form-control" id="Name" placeholder="Nombre del Men&uacute;">
                         </div>
                         <div class="form-group">
-                          <label class="sr-only" for="Caloria">Calorias</label>
-                          <input type="number" min="0" value="0" class="form-control" id="Caloria" placeholder="Calorias">
+                            <label class="sr-only" for="Descripcion">Descripci&oacute;n</label>
+                            <input type="text" class="form-control" id="Descripcion" placeholder="Descripci&oacute;n">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="Fechainicio">Fecha de Inicio</label>
+                            <input type="date" class="form-control" id="Fechainicio" placeholder="Fecha de Inicio" value="">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="Fechafinal">Fecha de Finalizaci&oacute;n</label>
+                            <input type="date" class="form-control"  id="Fechafinal" placeholder="Fecha de Finalizaci&oacute;n">
+                        </div>
+                    </form>
+                    <br>
+                    <form role="form">
+                        <div id="ListaPlatillos">
+                            <h4>Platillos</h4>
+                            <div class="col-md-offset-1"> 
+                                    <div class="checkbox"><label><input type="checkbox" value="">Arroz con pollo</label></div>
+                                    <div class="checkbox"><label><input type="checkbox" value="">Arroz con carne</label></div>
+                                    <div class="checkbox"><label><input type="checkbox" value="">Pollo asado</label></div>
+                                    <div class="checkbox"><label><input type="checkbox" value="">Carne asada</label></div>
+                            </div>
                         </div>
                         <div class="col-owner-offset-9">
                             <div class="btn-group btn-group-lg" >
-                                <button type="submit" data-loading-text="Guardando..." class="btn bg-primary"><span class="glyphicon glyphicon-save"></span> Guardar</button>
-                                <button type="submit" data-loading-text="Borrando..." class="btn bg-primary"><span class="glyphicon glyphicon-trash"></span> Borrar</button>
+                                <button type="submit" data-loading-text="Guardando..." class="btn bg-primary" id="edsave"><span class="glyphicon glyphicon-save"></span> Guardar</button>
+                            </div>
+                            <div class="btn-group btn-group-lg" >
+                                <button type="submit" data-loading-text="Borrando..." class="btn bg-primary" id="ederaser"><span class="glyphicon glyphicon-trash"></span> Borrar</button>
                             </div>
                         </div>
                     </form>
+                    <br>
+                    <br>
+                    <br>
                 </div>
                 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++/-->
                 <div id="Agregar">
@@ -133,26 +165,56 @@
                     <form class="form-inline" role="form">
                         <div class="form-group">
                           <label class="sr-only" for="adName">Nombre</label>
-                          <input type="text" class="form-control" id="adName" placeholder="Nombre del Ingrediente">
+                          <input type="text" class="form-control" id="adName" placeholder="Nombre del Men&uacute;">
                         </div>
                         <div class="form-group">
-                          <label class="sr-only" for="adCaloria">Calorias</label>
-                          <input type="number" min="0" value="0" class="form-control" id="adCaloria" placeholder="Calorias">
+                            <label class="sr-only" for="adDescripcion">Descripci&oacute;n</label>
+                            <input type="text" class="form-control" id="adDescripcion" placeholder="Descripci&oacute;n">
                         </div>
-                        <div class="col-owner-offset-9">
-                            <div class="btn-group btn-group-lg" >
-                                <button type="submit" data-loading-text="Guardando..." class="btn bg-primary"><span class="glyphicon glyphicon-save"></span> Guardar</button>
+                        <div class="form-group">
+                            <label class="sr-only" for="adFechainicio">Fecha de Inicio</label>
+                            <input type="date" class="form-control" id="adFechainicio" placeholder="Fecha de Inicio">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="adFechafinal">Fecha de Finalizaci&oacute;n</label>
+                            <input type="date" class="form-control"  id="adFechafinal" placeholder="Fecha de Finalizaci&oacute;n">
+                        </div>
+                    </form>
+                    <br>
+                    <form role="form">
+                        <div id="adListaPlatillos">
+                            <h4>Platillos</h4>
+                            <div class="col-md-offset-1"> 
+                                    <div class="checkbox"><label><input type="checkbox" value="">Arroz con pollo</label></div>
+                                    <div class="checkbox"><label><input type="checkbox" value="">Arroz con carne</label></div>
+                                    <div class="checkbox"><label><input type="checkbox" value="">Pollo asado</label></div>
+                                    <div class="checkbox"><label><input type="checkbox" value="">Carne asada</label></div>
+                            </div>
+                        
+                            <div class="col-owner-offset-9">
+                                <div class="btn-group btn-group-lg" >
+                                    <button type="submit" data-loading-text="Guardando..." class="btn bg-primary" id="adsave"><span class="glyphicon glyphicon-save"></span> Guardar</button>
+                                </div>
                             </div>
                         </div>
                     </form>
+                    <br>
+                    <br>
+                    <br>
                 </div>
                 
             </div>
+            </div>
+            <hr class="featurette-divider">
+            <!-- FOOTER -->
+            <footer>
+              <p>&copy; 2014 La Cuchara Alegre. &middot; <a href="">Privacy</a> &middot; <a href="">Terms</a></p>
+            </footer>
             
-
         </div><!-- /.container -->
 
-
+            <!-- FOOTER -->
+            
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->

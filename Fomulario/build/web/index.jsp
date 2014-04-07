@@ -15,7 +15,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-        <!--link rel="shortcut icon" href="http://getbootstrap.com/assets/ico/favicon.ico"-->
+        <link rel="shortcut icon" href="img/Food_Icon_32.png">
 
     <title>Inicio</title>
 
@@ -33,10 +33,11 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script>window["_GOOG_TRANS_EXT_VER"] = "1";</script></head>
+    <script>window["_GOOG_TRANS_EXT_VER"] = "1";</script>
+    </head>
 
     <body>
-
+        
         <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -57,12 +58,53 @@
             </div><!--/.nav-collapse -->
           </div>
         </div>
-
+        
         <div class="container">
-
-            <div class="page-header">
-              <h1>Ingredientes</h1>
+             <!-- START THE FEATURETTES -->
+            <hr class="featurette-divider">
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading"><em>Administre sus Ingredientes.</em></h2>
+                    <p class="lead">Gestiones los ingredientes de su cocina, adem&aacute;s lleve el control de las calorias de cada ingrediente. En esta secci&oacute;n usded podr&aacute; agregar o editar todos los ingredientes que utiliza en su cocina.</p>
+                </div>
+                <div class="col-md-5">
+                    <img class="img-rounded img-responsive" src="http://static.freepik.com/foto-gratis/ingredientes-saludables-de-pasta-de-comidas_2883817.jpg" alt="Generic placeholder image" >
+                </div>
             </div>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-5">
+                    <img class="img-rounded img-responsive" src="http://www.garuyo.com/uploads/2013/4/restaurante-olive-garden-comida-italiana-platillos-light_121763.jpg_28487.670x503.jpg" alt="Generic placeholder image">
+                </div>
+                <div class="col-md-7">
+                    <h2 class="featurette-heading"><em>Administre sus Platillos</em></h2>
+                    <p class="lead">Lleve las gestiones de los platillos, a&ntilde;adiendo el nombre y precio a cada uno. En esta secci&oacuten usded podr&aacute editar o agregar nuevos platillos, adem&aacute;s de controlar los ingredientes que componen sus platillos.</p>
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading"><em>Administre el Men&uacute;</em></h2>
+                    <p class="lead">En esta secci&oacute;n usted podr&aacute; administrar los platillos que conforman el men&uacute;. Agregue o edite el men&uacute; e incluso escoja el rango de fechas en que este será brindado por su cocina.</p>
+                </div>
+                <div class="col-md-5">
+                    <img class="img-rounded img-responsive" src="http://static.freepik.com/foto-gratis/gratis-misc-restaurante-menu-vector-azul-lindo-color-azul-comida-hermosa-inteligente_270-161110.jpg" alt="Generic placeholder image">
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <!-- /END THE FEATURETTES -->
+
+
+            <!-- FOOTER -->
+            <footer>
+              <p>&copy; 2014 La Cuchara Alegre. &middot; <a href="">Privacy</a> &middot; <a href="">Terms</a></p>
+            </footer>
            
         </div><!-- /.container -->
 

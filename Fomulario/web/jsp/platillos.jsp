@@ -15,7 +15,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-        <!--link rel="shortcut icon" href="http://getbootstrap.com/assets/ico/favicon.ico"-->
+        <link rel="shortcut icon" href="../img/Food_Icon_32.png">
 
     <title>Platillos</title>
 
@@ -61,26 +61,35 @@
         <div class="container">
 
             <div class="page-header">
-              <h1>Ingredientes</h1>
+              <h1>Platillos</h1>
             </div>
+            <div class="row featurette">
             <div class="col-md-9">
-                <div id="Listadeingredientes">
-                    <h3>Lista de Ingredientes</h3>
+                <div id="ListadePlatillos">
+                    <h3>Lista de Platillos</h3>
                     <table class="table table-hover table-striped table-condensed" id="ingredientes">
                         <thead>
                             <tr>
                                 <th scope="col">Nombre</th>
-                                <th scope="col">Calor&iacute;as</th>
+                                <th scope="col">Precio</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Chile</td>
-                                <td>40</td>
+                                <td>Arroz con pollo</td>
+                                <td>2000</td>
                             </tr>
                             <tr>
-                                <td>Tomate</td>
-                                <td>55</td>
+                                <td>Arroz con carne</td>
+                                <td>2500</td>
+                            </tr>
+                            <tr>
+                                <td>Pollo asado</td>
+                                <td>3500</td>
+                            </tr>
+                            <tr>
+                                <td>Carne asada</td>
+                                <td>4500</td>
                             </tr>
                         </tbody>
                     </table>
@@ -101,31 +110,51 @@
                     <h3>Editar</h3>
                     <form role="form">
                         <div class="form-group">
-                            <select  class="form-control" id="selectingredientes" onChange="IngredienteSeleccionado()">
-                                <option>Escoger Ingrediente...</option>
-                                <option>Chile</option>
-                                <option>Tomate</option>
+                            <select  class="form-control" id="selectplatillos" onChange="PlatillosSeleccionado()">
+                                <option>Seleccione un Platillo...</option>
+                                <option>Arroz con pollo</option>
+                                <option>Arroz con carne</option>
+                                <option>Pollo asado</option>
+                                <option>Carne asada</option>
                             </select>
                     
                         </div>
                     </form>
                     <br>
-                    <form class="form-inline" role="form">
+                    <form id="Componentedeedicion" class="form-inline" role="form">
                         <div class="form-group">
                           <label class="sr-only" for="Name">Nombre</label>
-                          <input type="text" class="form-control" id="Name" placeholder="Nombre del Ingrediente">
+                          <input type="text" class="form-control" id="Name" placeholder="Nombre del Platillo">
                         </div>
                         <div class="form-group">
-                          <label class="sr-only" for="Caloria">Calorias</label>
-                          <input type="number" min="0" value="0" class="form-control" id="Caloria" placeholder="Calorias">
+                          <label class="sr-only" for="Precio">Precio</label>
+                          <input type="number" min="0" value="0" class="form-control" id="Precio" placeholder="Precio">
+                        </div>
+                    </form>
+                    <br>
+                    <form role="form">
+                        <div id="ListaIngredientes">
+                            <h4>Ingredientes</h4>
+                            <div class="col-md-offset-1"> 
+                                    <div class="checkbox"><label><input type="checkbox" value="">Chile</label></div>
+                                    <div class="checkbox"><label><input type="checkbox" value="">Carne</label></div>
+                                    <div class="checkbox"><label><input type="checkbox" value="">Pollo</label></div>
+                                    <div class="checkbox"><label><input type="checkbox" value="">Arroz</label></div>
+                                    <div class="checkbox"><label><input type="checkbox" value="">Cebolla</label></div>
+                            </div>
                         </div>
                         <div class="col-owner-offset-9">
                             <div class="btn-group btn-group-lg" >
-                                <button type="submit" data-loading-text="Guardando..." class="btn bg-primary"><span class="glyphicon glyphicon-save"></span> Guardar</button>
-                                <button type="submit" data-loading-text="Borrando..." class="btn bg-primary"><span class="glyphicon glyphicon-trash"></span> Borrar</button>
+                                <button type="submit" data-loading-text="Guardando..." class="btn bg-primary" id="edsave"><span class="glyphicon glyphicon-save"></span> Guardar</button>
+                            </div>
+                            <div class="btn-group btn-group-lg" >
+                                <button type="submit" data-loading-text="Borrando..." class="btn bg-primary" id="ederaser"><span class="glyphicon glyphicon-trash"></span> Borrar</button>
                             </div>
                         </div>
                     </form>
+                    <br>
+                    <br>
+                    <br>
                 </div>
                 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++/-->
                 <div id="Agregar">
@@ -133,22 +162,43 @@
                     <form class="form-inline" role="form">
                         <div class="form-group">
                           <label class="sr-only" for="adName">Nombre</label>
-                          <input type="text" class="form-control" id="adName" placeholder="Nombre del Ingrediente">
+                          <input type="text" class="form-control" id="adName" placeholder="Nombre del Platillo">
                         </div>
                         <div class="form-group">
-                          <label class="sr-only" for="adCaloria">Calorias</label>
-                          <input type="number" min="0" value="0" class="form-control" id="adCaloria" placeholder="Calorias">
+                          <label class="sr-only" for="adPrecio">Precio</label>
+                          <input type="number" min="0" value="0" class="form-control" id="adPrecio" placeholder="Precio">
+                        </div>
+                    </form>
+                    <br>
+                    <form role="form">
+                        <div id="adListaIngredientes">
+                            <h4>Ingredientes</h4>
+                            <div class="col-md-offset-1"> 
+                                    <div class="checkbox"><label><input type="checkbox" value="">Chile</label></div>
+                                    <div class="checkbox"><label><input type="checkbox" value="">Carne</label></div>
+                                    <div class="checkbox"><label><input type="checkbox" value="">Pollo</label></div>
+                                    <div class="checkbox"><label><input type="checkbox" value="">Arroz</label></div>
+                                    <div class="checkbox"><label><input type="checkbox" value="">Cebolla</label></div>
+                            </div>
                         </div>
                         <div class="col-owner-offset-9">
                             <div class="btn-group btn-group-lg" >
-                                <button type="submit" data-loading-text="Guardando..." class="btn bg-primary"><span class="glyphicon glyphicon-save"></span> Guardar</button>
+                                <button type="submit" data-loading-text="Guardando..." class="btn bg-primary" id="adsave"><span class="glyphicon glyphicon-save"></span> Guardar</button>
                             </div>
                         </div>
                     </form>
+                    <br>
+                    <br>
+                    <br>
                 </div>
                 
             </div>
-            
+            </div>
+            <hr class="featurette-divider">
+            <!-- FOOTER -->
+            <footer>
+              <p>&copy; 2014 La Cuchara Alegre. &middot; <a href="">Privacy</a> &middot; <a href="">Terms</a></p>
+            </footer>
 
         </div><!-- /.container -->
 

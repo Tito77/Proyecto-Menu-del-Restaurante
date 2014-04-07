@@ -15,7 +15,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-        <!--link rel="shortcut icon" href="http://getbootstrap.com/assets/ico/favicon.ico"-->
+        <link rel="shortcut icon" href="../img/Food_Icon_32.png">
 
     <title>Ingredientes</title>
 
@@ -63,6 +63,7 @@
             <div class="page-header">
               <h1>Ingredientes</h1>
             </div>
+            <div class="row featurette">
             <div class="col-md-9">
                 <div id="Listadeingredientes">
                     <h3>Lista de Ingredientes</h3>
@@ -79,8 +80,20 @@
                                 <td>40</td>
                             </tr>
                             <tr>
-                                <td>Tomate</td>
-                                <td>55</td>
+                                <td>Carne</td>
+                                <td>1050</td>
+                            </tr>
+                            <tr>
+                                <td>Pollo</td>
+                                <td>900</td>
+                            </tr>
+                            <tr>
+                                <td>Arroz</td>
+                                <td>300</td>
+                            </tr>
+                            <tr>
+                                <td>Cebolla</td>
+                                <td>10</td>
                             </tr>
                         </tbody>
                     </table>
@@ -102,9 +115,12 @@
                     <form role="form">
                         <div class="form-group">
                             <select  class="form-control" id="selectingredientes" onChange="IngredienteSeleccionado()">
-                                <option>Escoger Ingrediente...</option>
+                                <option>Seleccione un Ingrediente...</option>
                                 <option>Chile</option>
-                                <option>Tomate</option>
+                                <option>Carne</option>
+                                <option>Pollo</option>
+                                <option>Arroz</option>
+                                <option>Cebolla</option>
                             </select>
                     
                         </div>
@@ -121,8 +137,10 @@
                         </div>
                         <div class="col-owner-offset-9">
                             <div class="btn-group btn-group-lg" >
-                                <button type="submit" data-loading-text="Guardando..." class="btn bg-primary"><span class="glyphicon glyphicon-save"></span> Guardar</button>
-                                <button type="submit" data-loading-text="Borrando..." class="btn bg-primary"><span class="glyphicon glyphicon-trash"></span> Borrar</button>
+                                <button type="submit" data-loading-text="Guardando..." class="btn bg-primary" id="edsave"><span class="glyphicon glyphicon-save"></span> Guardar</button>
+                            </div>
+                            <div class="btn-group btn-group-lg" >
+                                <button type="submit" data-loading-text="Borrando..." class="btn bg-primary" id="ederaser"><span class="glyphicon glyphicon-trash"></span> Borrar</button>
                             </div>
                         </div>
                     </form>
@@ -141,17 +159,22 @@
                         </div>
                         <div class="col-owner-offset-9">
                             <div class="btn-group btn-group-lg" >
-                                <button type="submit" data-loading-text="Guardando..." class="btn bg-primary"><span class="glyphicon glyphicon-save"></span> Guardar</button>
+                                <button type="submit" data-loading-text="Guardando..." class="btn bg-primary" id="adsave"><span class="glyphicon glyphicon-save"></span> Guardar</button>
                             </div>
                         </div>
                     </form>
                 </div>
                 
             </div>
-            
-
+            </div>
+            <hr class="featurette-divider">
+            <!-- FOOTER -->
+            <footer>
+              <p>&copy; 2014 La Cuchara Alegre. &middot; <a href="">Privacy</a> &middot; <a href="">Terms</a></p>
+            </footer>
         </div><!-- /.container -->
-
+            
+            
 
         <!-- Bootstrap core JavaScript
         ================================================== -->

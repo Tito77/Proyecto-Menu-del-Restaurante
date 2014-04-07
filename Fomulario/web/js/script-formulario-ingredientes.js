@@ -17,7 +17,13 @@ function muestra(){
        showElement("");
 }
 
-
+function Ocultarelementoseditar(){
+    //oculta los elementos de la seccion de editar
+       hiddenElement("edsave");
+       hiddenElement("ederaser");
+       hiddenElement("Name");
+       hiddenElement("Caloria");
+}
 
 
 function MostrarEditar(){
@@ -26,6 +32,7 @@ function MostrarEditar(){
        showElement("BMCancelar");
        hiddenElement("BMedit");
        hiddenElement("Agregar");
+       Ocultarelementoseditar();
        limpia();
 }
 
@@ -35,15 +42,20 @@ function MostrarAgregar(){
        showElement("BMCancelar");
        hiddenElement("BMadd");
        hiddenElement("Editar");
+       Ocultarelementoseditar();
+       limpia();
 }
 
 function Cancelar(){
        showElement("BMedit");
        showElement("BMadd");
        limpia();
+       //oculta los elementos de la seccion de editar
+       Ocultarelementoseditar();
        hiddenElement("BMCancelar");
        hiddenElement("Editar");
        hiddenElement("Agregar");
+       
 }
 function limpia(){
     //limpia la seccion de editar
@@ -66,10 +78,17 @@ function showElement(id) {
 function IngredienteSeleccionado()
 {
   var seleccion=document.getElementById('selectingredientes');
-  if(seleccion.selectedIndex!=0){
+  if(seleccion.selectedIndex!==0){
+    //oculta los elementos de la seccion de editar
+       showElement("edsave");
+       showElement("ederaser");
+       showElement("Name");
+       showElement("Caloria");
       document.getElementById('Name').value=seleccion.options[seleccion.selectedIndex].text;
   }
   else{
+    //oculta los elementos de la seccion de editar
+       Ocultarelementoseditar();
       document.getElementById('Name').value="";
       document.getElementById('Caloria').value=0;
   }
