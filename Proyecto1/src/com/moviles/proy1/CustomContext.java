@@ -17,6 +17,8 @@ public class CustomContext extends Application {
 		
 		ArrayList<Ingrediente> _lIngredientes = new ArrayList<Ingrediente>();
 		Platillo _gallo = new Platillo();
+		Platillo _camaron = new Platillo();
+		Platillo _bistec = new Platillo();
 		
 		Ingrediente _arroz = new Ingrediente();
 		_arroz.set_sNombre("Arroz");
@@ -33,6 +35,18 @@ public class CustomContext extends Application {
 		_gallo.set_fPrecio(1500);
 		
 		lPlatillos.add(_gallo);
+		
+		_camaron.set_sNombre("Arroz con camarones");
+		_camaron.set_lIngredientes(_lIngredientes);
+		_camaron.set_fPrecio(2500);
+		
+		lPlatillos.add(_camaron);
+		
+		_bistec.set_sNombre("Bistec encebollado");
+		_bistec.set_lIngredientes(_lIngredientes);
+		_bistec.set_fPrecio(3700);
+		
+		lPlatillos.add(_bistec);
 	}
 
 }
