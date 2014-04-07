@@ -17,8 +17,15 @@ class Constantes:
 	mModulePlatillo = "GP"
 	mModuleMenu = "GM"
 
+	#ModuloPlatillo
+	mGPOperacionAgregaIng = "AIN"
+	mGPOperacionBorrarIng = "BIN"
+	mGPOperacionSeleccIng = "SIN"
 
 	#ModuloMenu
+	mGMOperacionAgregaPla = "APL"
+	mGMOperacionBorrarPla = "BPL"
+	mGMOperacionSeleccPla = "SPL"
 	mGMOperacionAcivar = "ACT"
 	mGMOperacionDesact = "DAC"
 	mGMEstadoActivo = "A"

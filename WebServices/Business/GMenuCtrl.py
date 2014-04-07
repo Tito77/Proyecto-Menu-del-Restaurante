@@ -13,7 +13,10 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'CommonEntities'))
 from google.appengine.ext import ndb
 import Constantes
 import DMenu
+import DPlatillo
+import DPlaXMenu
 import CMenu
+import CPlatillo
 
 #Gestion Menu Control
 class GMenuCtrl:
@@ -42,6 +45,12 @@ class GMenuCtrl:
 			self.Activar()
 		if self.mOperation == Constantes.Constantes().mGMOperacionDesact:
 			self.Desactivar()
+		if self.mOperation == Constantes.Constantes().mGMOperacionAgregaPla:
+			self.AgregarPlatillo()
+		if self.mOperation == Constantes.Constantes().mGMOperacionBorrarPla:
+			self.BorrarPlatillo()
+		if self.mOperation == Constantes.Constantes().mGMOperacionSeleccPla:
+			self.SeleccionarPlatillos()
 
 
 	def Insert(self):
@@ -127,6 +136,40 @@ class GMenuCtrl:
 					recMenu.mEstadoAplicacion = Constantes.Constantes().mGMEstadoInactivo
 					recMenu.put()
 					self.mReturnValue = "1"
+
+	def AgregarPlatillo(self):
+		self.mReturnValue = "0"
+		keyMenuValue = str(self.mRequest.get('GMKEY'))
+		keyPlatilloValue = str(self.mRequest.get('GPKEY'))
+		dplaxmenu = DPlaXMenu.DPlaXMenu()
+		dplaxmenu.mKeyMenu = keyMenuValue
+		dplaxmenu.mKeyPlatillo = keyPlatilloValue
+		dplaxmenu.put()
+		self.mReturnValue = "1"
+
+	def BorrarPlatillo(self):
+		self.mReturnValue = "0"
+		keyMenuValue = str(self.mRequest.get('GMKEY'))
+		keyPlatilloValue = str(self.mRequest.get('GPKEY'))
+		qry = DPlaXMenu.DPlaXMenu.query()
+		if keyMenuValue != "" and keyPlatilloValue != "":
+			for recMenu in qry:
+				if str(recMenu.mKeyMenu) == keyMenuValue and str(recMenu.mKeyPlatillo) == keyPlatilloValue:
+					self.mReturnValue = "1"
+					recMenu.key.delete()
+
+	def SeleccionarPlatillos(self):
+		self.mReturnValue = "0"
+		lstPlatillos = []
+		keyMenuValue = str(self.mRequest.get('GMKEY'))
+		qryMenu = DPlaXMenu.DPlaXMenu.query()
+		qryPlatillo = DPlatillo.DPlatillo.query()
+		for recMenu in qryMenu:
+			if str(recMenu.mKeyMenu) == keyMenuValue:					
+				for recPlatillo in qryPlatillo:
+					if str(recPlatillo.key.id()) == str(recMenu.mKeyPlatillo):
+						lstPlatillos.append(CPlatillo.CPlatillo(str(recPlatillo.mNombrePlatillo),str(recPlatillo.mPrecio),str(recPlatillo.key.id())).jsonSerialize())
+		self.mReturnValue = lstPlatillos
 
 	def GetValue(self):
 		return self.mReturnValue

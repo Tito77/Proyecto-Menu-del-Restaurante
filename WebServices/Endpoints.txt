@@ -47,6 +47,16 @@ url															desc					params				GET/POST/PUT
 
 ?EXECOP=DEL&MOD=GP&GPKEY=(llave)							Borra un platillo 		GPKEY: Obligatorio	GET
 															de la base			
+
+?EXECOP=AIN&MOD=GP&GPKEY=(llave)&GI=(llave)					Agregar un ingrediente 	GPKEY: Obligatorio	GET
+															al platillo 			GIKEY: Obligatorio
+
+?EXECOP=BIN&MOD=GP&GPKEY=(llave)&GI=(llave)					Borrar un ingrediente 	GPKEY: Obligatorio	GET
+															al platillo 			GIKEY: Obligatorio
+
+?EXECOP=SIN&MOD=GP&GPKEY=(llave)&GI=(llave)					Seleccionar los		 	GPKEY: Obligatorio	GET
+															ingredientes 			GIKEY: Obligatorio
+															del platillo
 -----------------------------------------------------------------------------------------------------------------------
 url															desc					params				GET/POST/PUT
 ?EXECOP=SEL&MOD=GM 											Trae todos los			ninguno				GET
@@ -73,4 +83,14 @@ url															desc					params				GET/POST/PUT
 
 ?EXECOP=ACT&MOD=GM&GMKEY=(llave) 							Activar un menu			GMKEY: Obligatorio  GET	
 
-?EXECOP=DAC&MOD=GM&GMKEY=(llave) 							Desactivar un menu		GMKEY: Obligatorio  GET				
+?EXECOP=DAC&MOD=GM&GMKEY=(llave) 							Desactivar un menu		GMKEY: Obligatorio  GET			
+
+?EXECOP=AIN&MOD=GM&GMKEY=(llave)&GP=(llave)					Agregar un platillo 	GMKEY: Obligatorio	GET
+															al menu 				GPKEY: Obligatorio
+
+?EXECOP=BIN&MOD=GM&GMKEY=(llave)&GP=(llave)					Borrar un platillo 		GMKEY: Obligatorio	GET
+															al menu 				GPKEY: Obligatorio
+
+?EXECOP=SIN&MOD=GM&GMKEY=(llave)&GP=(llave)					Seleccionar los		 	GMKEY: Obligatorio	GET
+															platillos 				GPKEY: Obligatorio
+															del menu
