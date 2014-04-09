@@ -10,6 +10,7 @@ import sys, os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'Libraries'))
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'Dataaccess'))
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'CommonEntities'))
+from datetime import datetime
 from google.appengine.ext import ndb
 import Constantes
 import DMenu
@@ -51,6 +52,8 @@ class GMenuCtrl:
 			self.BorrarPlatillo()
 		if self.mOperation == Constantes.Constantes().mGMOperacionSeleccPla:
 			self.SeleccionarPlatillos()
+		if self.mOperation == Constantes.Constantes().mGMOperacionSeleccMen:
+			self.SeleccionarMenuDelDia()
 
 
 	def Insert(self):
@@ -170,6 +173,21 @@ class GMenuCtrl:
 					if str(recPlatillo.key.id()) == str(recMenu.mKeyPlatillo):
 						lstPlatillos.append(CPlatillo.CPlatillo(str(recPlatillo.mNombrePlatillo),str(recPlatillo.mPrecio),str(recPlatillo.key.id())).jsonSerialize())
 		self.mReturnValue = lstPlatillos
+
+	def SeleccionarMenuDelDia(self):
+		self.mReturnValue = "0"
+		lstMenus = []
+		qryMenu = DMenu.DMenu.query()
+		for recMenu in qryMenu:
+			strActivo = recMenu.mEstadoAplicacion
+			dateDMenuFIA = datetime.strptime(recMenu.mFechaInicioAplicacion, "%Y%m%d").date()
+			dateDMenuFFA = datetime.strptime(recMenu.mFechaFinalAplicacion,"%Y%m%d").date()
+			dateToday = datetime.today().date()
+			if strActivo == Constantes.Constantes().mGMEstadoActivo:
+				if dateToday < dateDMenuFFA and dateToday >= dateDMenuFIA:
+					lstMenus.append(CMenu.CMenu(str(recMenu.mNombreMenu),str(recMenu.mDescripcion),str(recMenu.mFechaInicioAplicacion),str(recMenu.mFechaFinalAplicacion),str(recMenu.mEstadoAplicacion),str(recMenu.key.id())).jsonSerialize())
+		self.mReturnValue = lstMenus
+
 
 	def GetValue(self):
 		return self.mReturnValue

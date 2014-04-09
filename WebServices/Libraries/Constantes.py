@@ -26,6 +26,7 @@ class Constantes:
 	mGMOperacionAgregaPla = "APL"
 	mGMOperacionBorrarPla = "BPL"
 	mGMOperacionSeleccPla = "SPL"
+	mGMOperacionSeleccMen = "SME"
 	mGMOperacionAcivar = "ACT"
 	mGMOperacionDesact = "DAC"
 	mGMEstadoActivo = "A"

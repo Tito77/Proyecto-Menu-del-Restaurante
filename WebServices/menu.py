@@ -9,7 +9,6 @@ import Bridge
 class MainPage(webapp2.RequestHandler):
 
 	def get(self):
-		executeOperation = self.request.get('EXECOP')
 		b = Bridge.Bridge(self.request)
 		b.IniciarEjecucion()
 		self.response.write(b.mReturnValue)

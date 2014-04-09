@@ -94,3 +94,7 @@ url															desc					params				GET/POST/PUT
 ?EXECOP=SIN&MOD=GM&GMKEY=(llave)&GP=(llave)					Seleccionar los		 	GMKEY: Obligatorio	GET
 															platillos 				GPKEY: Obligatorio
 															del menu
+
+?EXECOP=SME&MOD=GM&											Seleccionar los			ninguno				GET
+															menus disponibles
+															y activos del dia
