@@ -4,45 +4,43 @@ import java.util.ArrayList;
 
 public class Menu {
 	
-	private ArrayList<Platillo> _lPlatillos;
-	private String _sNombre, _sDescripcion, _sFechaInicio, _sFechaFin, _sEstado;
+	private String mNombreMenu, mDescripcion, mFechaInicioAplicacion, mFechaFinalAplicacion, mEstadoAplicacion, mKeyValue;
 	
-	
-	public ArrayList<Platillo> get_lPlatillos() {
-		return _lPlatillos;
-	}
-	public void set_lPlatillos(ArrayList<Platillo> _lPlatillos) {
-		this._lPlatillos = _lPlatillos;
-	}
 	public String get_sNombre() {
-		return _sNombre;
+		return mNombreMenu;
 	}
 	public void set_sNombre(String _sNombre) {
-		this._sNombre = _sNombre;
+		this.mNombreMenu = _sNombre;
 	}
 	public String get_sDescripcion() {
-		return _sDescripcion;
+		return mDescripcion;
 	}
 	public void set_sDescripcion(String _sDescripcion) {
-		this._sDescripcion = _sDescripcion;
+		this.mDescripcion = _sDescripcion;
 	}
 	public String get_sFechaInicio() {
-		return _sFechaInicio;
+		return mFechaInicioAplicacion;
 	}
 	public void set_sFechaInicio(String _sFechaInicio) {
-		this._sFechaInicio = _sFechaInicio;
+		this.mFechaInicioAplicacion = _sFechaInicio;
 	}
 	public String get_sFechaFin() {
-		return _sFechaFin;
+		return mFechaFinalAplicacion;
 	}
 	public void set_sFechaFin(String _sFechaFin) {
-		this._sFechaFin = _sFechaFin;
+		this.mFechaFinalAplicacion = _sFechaFin;
 	}
 	public String get_sEstado() {
-		return _sEstado;
+		return mEstadoAplicacion;
 	}
 	public void set_sEstado(String _sEstado) {
-		this._sEstado = _sEstado;
+		this.mEstadoAplicacion = _sEstado;
+	}
+	public String getmKeyValue() {
+		return mKeyValue;
+	}
+	public void setmKeyValue(String mKeyValue) {
+		this.mKeyValue = mKeyValue;
 	}
 	
 	

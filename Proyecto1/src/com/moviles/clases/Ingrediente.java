@@ -2,30 +2,30 @@ package com.moviles.clases;
 
 public class Ingrediente {
 	
-	private String _sNombre, _sLlave, _sCalorias;
+	private String mNombreIngrediente, mKeyValue, mCalorias;
 
 	public String get_sNombre() {
-		return _sNombre;
+		return mNombreIngrediente;
 	}
 
 	public void set_sNombre(String _sNombre) {
-		this._sNombre = _sNombre;
+		this.mNombreIngrediente = _sNombre;
 	}
 
 	public String get_sLlave() {
-		return _sLlave;
+		return mKeyValue;
 	}
 
 	public void set_sLlave(String _sLlave) {
-		this._sLlave = _sLlave;
+		this.mKeyValue = _sLlave;
 	}
 
 	public String get_sCalorias() {
-		return _sCalorias;
+		return mCalorias;
 	}
 
 	public void set_sCalorias(String _sCalorias) {
-		this._sCalorias = _sCalorias;
+		this.mCalorias = _sCalorias;
 	}
 	
 	

@@ -6,25 +6,27 @@ import java.util.ArrayList;
 
 public class Platillo {
 	
-	private String _sNombre, _sPrecio, _sLlave;
+	//"{\n \"mPrecio\": \"\", \n \"mKeyValue\": \"5757334940811264\", \n \"mNombrePlatillo\": \"Arroz Con Camarones\"\n}"
+	
+	private String mNombrePlatillo, mPrecio, mKeyValue;
 	private ArrayList<Ingrediente> _lIngredientes;
 	public String get_sNombre() {
-		return _sNombre;
+		return mNombrePlatillo;
 	}
 	public void set_sNombre(String _sNombre) {
-		this._sNombre = _sNombre;
+		this.mNombrePlatillo = _sNombre;
 	}
 	public String get_sPrecio() {
-		return _sPrecio;
+		return mPrecio;
 	}
 	public void set_sPrecio(String _sPrecio) {
-		this._sPrecio = _sPrecio;
+		this.mPrecio = _sPrecio;
 	}
 	public String get_sLlave() {
-		return _sLlave;
+		return mKeyValue;
 	}
 	public void set_sLlave(String _sLlave) {
-		this._sLlave = _sLlave;
+		this.mKeyValue = _sLlave;
 	}
 	public ArrayList<Ingrediente> get_lIngredientes() {
 		return _lIngredientes;
