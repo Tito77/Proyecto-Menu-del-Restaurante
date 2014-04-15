@@ -67,23 +67,7 @@
                                 <th scope="col">Precio</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>Arroz con pollo</td>
-                                <td>2000</td>
-                            </tr>
-                            <tr>
-                                <td>Arroz con carne</td>
-                                <td>2500</td>
-                            </tr>
-                            <tr>
-                                <td>Pollo asado</td>
-                                <td>3500</td>
-                            </tr>
-                            <tr>
-                                <td>Carne asada</td>
-                                <td>4500</td>
-                            </tr>
+                        <tbody id="platillosListBody">
                         </tbody>
                     </table>
                     <div class="col-owner-offset-9">
@@ -126,22 +110,18 @@
                     </form>
                     <br>
                     <form role="form">
+                        <input type="hidden" id="keyPlatilloValue" value="" >
                         <div id="ListaIngredientes">
                             <h4>Ingredientes</h4>
                             <div class="col-md-offset-1"> 
-                                    <div class="checkbox"><label><input type="checkbox" value="">Chile</label></div>
-                                    <div class="checkbox"><label><input type="checkbox" value="">Carne</label></div>
-                                    <div class="checkbox"><label><input type="checkbox" value="">Pollo</label></div>
-                                    <div class="checkbox"><label><input type="checkbox" value="">Arroz</label></div>
-                                    <div class="checkbox"><label><input type="checkbox" value="">Cebolla</label></div>
                             </div>
                         </div>
                         <div class="col-owner-offset-9">
-                            <div class="btn-group btn-group-lg" >
-                                <button type="submit" data-loading-text="Guardando..." class="btn bg-primary" id="edsave"><span class="glyphicon glyphicon-save"></span> Guardar</button>
+                            <div class="btn-group btn-group-lg" onclick="updatePlatillo()">
+                                <button type="button" data-loading-text="Guardando..." class="btn bg-primary" id="edsave"><span class="glyphicon glyphicon-save"></span> Guardar</button>
                             </div>
-                            <div class="btn-group btn-group-lg" >
-                                <button type="submit" data-loading-text="Borrando..." class="btn bg-primary" id="ederaser"><span class="glyphicon glyphicon-trash"></span> Borrar</button>
+                            <div class="btn-group btn-group-lg" onclick="deletePlatillo()" >
+                                <button type="button" data-loading-text="Borrando..." class="btn bg-primary" id="ederaser"><span class="glyphicon glyphicon-trash"></span> Borrar</button>
                             </div>
                         </div>
                     </form>
@@ -164,19 +144,9 @@
                     </form>
                     <br>
                     <form role="form">
-                        <div id="adListaIngredientes">
-                            <h4>Ingredientes</h4>
-                            <div class="col-md-offset-1"> 
-                                    <div class="checkbox"><label><input type="checkbox" value="">Chile</label></div>
-                                    <div class="checkbox"><label><input type="checkbox" value="">Carne</label></div>
-                                    <div class="checkbox"><label><input type="checkbox" value="">Pollo</label></div>
-                                    <div class="checkbox"><label><input type="checkbox" value="">Arroz</label></div>
-                                    <div class="checkbox"><label><input type="checkbox" value="">Cebolla</label></div>
-                            </div>
-                        </div>
                         <div class="col-owner-offset-9">
-                            <div class="btn-group btn-group-lg" >
-                                <button type="submit" data-loading-text="Guardando..." class="btn bg-primary" id="adsave"><span class="glyphicon glyphicon-save"></span> Guardar</button>
+                            <div class="btn-group btn-group-lg" onclick="insertPlatillo()">
+                                <button type="button" data-loading-text="Guardando..." class="btn bg-primary" id="adsave"><span class="glyphicon glyphicon-save"></span> Guardar</button>
                             </div>
                         </div>
                     </form>

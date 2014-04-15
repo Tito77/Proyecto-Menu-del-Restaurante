@@ -7,12 +7,12 @@ var WSURL = "http://www.modern-door-542.appspot.com";
 
 window.onload=function(){
     hiddenElement("rqstTest");
-    getMenus();
     hiddenElement("Editar");
     hiddenElement("Agregar");
     hiddenElement("BMCancelar");
     obtienefecha("adFechainicio",1);
     obtienefecha("adFechafinal",0);
+    getMenus();
 };
 
 function Params(strMenuOperation,strModulo)
