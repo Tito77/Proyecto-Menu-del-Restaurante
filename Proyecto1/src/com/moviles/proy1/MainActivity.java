@@ -21,7 +21,7 @@ public class MainActivity extends Activity {
 		
 		FragmentManager m = getFragmentManager();
 		FragmentTransaction trans = m.beginTransaction();
-		trans.add(R.id.container, new ListaPlatillosFragment(), "lista");
+		trans.add(R.id.container, new ListaMenuFragment(), "lista");
 		trans.commit();
 	}
 

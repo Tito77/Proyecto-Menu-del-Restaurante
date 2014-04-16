@@ -6,5 +6,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_scan">Escanear promoción</string>
     <string name="title_activity_info_platillo">InfoPlatilloActivity</string>
+    <string name="title_activity_info_menu">InfoMenuActivity</string>
 
 </resources>

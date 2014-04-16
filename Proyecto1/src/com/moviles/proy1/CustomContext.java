@@ -26,6 +26,7 @@ public class CustomContext extends Application {
 	HttpGet _getMenu, _getPlatillos, _getIngredientes;
 	Menu _mMenu;
 	ArrayList<Platillo> lPlatillos;
+	ArrayList<Menu> lMenus;
 	JSONObject respJSON, platillosJSON, ingJSON;
 	JSONArray respJSON2, platillosJSON2, ingJSON2;
 	
@@ -34,6 +35,7 @@ public class CustomContext extends Application {
 		super.onCreate();
 		_mMenu = new Menu();
 		lPlatillos = new ArrayList<Platillo>();
+		lMenus = new ArrayList<Menu>();
 		
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 	    StrictMode.setThreadPolicy(policy);
@@ -49,9 +51,9 @@ public class CustomContext extends Application {
 		        
 		        respJSON = new JSONObject(respStr);
 		        respJSON2 = respJSON.getJSONArray("RETURNVALUE");
-		        //JSONObject tempJSON = respJSON2.getJSONObject(0);
 		        _mMenu = new Gson().fromJson(respJSON2.getString(1), Menu.class);
 		        Log.v("Menú cargado",_mMenu.get_sDescripcion());
+		        lMenus.add(_mMenu);
 		        
 		        _getPlatillos = new HttpGet("http://modern-door-542.appspot.com/?EXECOP=SPL&MOD=GM&GMKEY="+_mMenu.getmKeyValue());
 		        _getPlatillos.setHeader("content-type", "application/json");
