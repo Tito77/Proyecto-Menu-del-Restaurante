@@ -11,6 +11,15 @@
         android:layout_height="match_parent" 
         android:layout_weight="1"/>
 
+    <FrameLayout
+        android:layout_width="1dp"
+        android:layout_height="match_parent" 
+		android:background="#3E83A4"
+        >
+    </FrameLayout>
+	
+    
+    
     <fragment
         android:id="@+id/frag_detalle"
         android:name="com.cocina.ordenes.fragments.DetalleFragment"

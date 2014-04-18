@@ -1,9 +1,6 @@
 package com.cocina.ordenes.fragments;
 
-import com.cocina.ordenes.R;
-import com.cocina.ordenes.R.layout;
-import com.cocina.ordenes.estructuras.ListadeOrdenes;
-import com.cocina.ordenes.estructuras.Orden;
+import java.util.ArrayList;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -17,6 +14,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.cocina.ordenes.R;
+import com.cocina.ordenes.adapters.AdaptadorListaOrdenes;
+import com.cocina.ordenes.estructuras.DetalleOrden;
+import com.cocina.ordenes.estructuras.ListadeOrdenes;
+import com.cocina.ordenes.estructuras.Orden;
+import com.cocina.ordenes.miscelaneas.SwipeListViewTouchListener;
+
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.
  * 
@@ -27,9 +31,13 @@ public class ListadoFragment extends Fragment {
 		// Required empty public constructor
 	}
 	public ListadeOrdenes listas=new ListadeOrdenes();
-	private Orden[] datos =  //estos son elementos estáticos que se utilizaran en el ListadoFragment
-            listas.getListaOrdenes();
+	/*private Orden[] datos =  //estos son elementos estáticos que se utilizaran en el ListadoFragment
+            listas.getListaOrdenes();*/
  
+	
+	private ArrayList<Orden> datos =  //estos son elementos estáticos que se utilizaran en el ListadoFragment
+           listas.getListaconOrdenes();
+	
 	
 	 private ListView ListaOrdenes;
 	 private OrdenListener listener;
@@ -47,7 +55,11 @@ public class ListadoFragment extends Fragment {
  
         ListaOrdenes = (ListView)getView().findViewById(R.id.Listado_Ordenes); //Listado_Ordenes es en el fragment_listado y hace referencia a ListaOrdenes
  
-        ListaOrdenes.setAdapter(new AdaptadorOrdenes(this));//se ejecuta el montaje final ya con los datos
+        
+        // Al adapter personalizado le pasamos el contexto y la lista que contiene	
+        final AdaptadorListaOrdenes adapter=new AdaptadorListaOrdenes(this,datos);
+        // Añadimos el adapter al listview
+        ListaOrdenes.setAdapter(adapter);//se ejecuta el montaje final ya con los datos
         
         ListaOrdenes.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> list, View view, int pos, long id) {
@@ -59,35 +71,53 @@ public class ListadoFragment extends Fragment {
 		});
         
 
-    }
-	
+      //Deslizar item para borrarlo
+      		SwipeListViewTouchListener touchListener =new SwipeListViewTouchListener(ListaOrdenes,new SwipeListViewTouchListener.OnSwipeCallback() {
+      			@Override
+      			public void onSwipeLeft(ListView listView, int [] reverseSortedPositions) {
+      				//Aqui ponemos lo que hara el programa cuando deslizamos un item ha la izquierda
+      				/*datos.remove(reverseSortedPositions[0]);
+      				adapter.notifyDataSetChanged();
+      				Orden Noelementos;
+      				if ((listener!=null)&&(datos.isEmpty())) {
+      					Noelementos=new Orden("0", "0", "0", "0");// si ya no hay elementos u ordenes
+    					listener.onOrdenSeleccionado(Noelementos);
+    				}
+      				if ((listener!=null)) {
+      					Noelementos=new Orden("-1", "0", "0", "0");
+    					listener.onOrdenSeleccionado(Noelementos);//si solamente borro una orden pero todavía hay más en espera
+    				}*/
+      				
+      			}
 
- 
-	    class AdaptadorOrdenes extends ArrayAdapter<Orden> { //aqui se realiza el motaje del adaptador con los datos,
-	    													//solomente se le dice cuales elementos debe seleccionar
-	 
-	            Activity context;
-	 
-	            AdaptadorOrdenes(Fragment context) {
-	                super(context.getActivity(), R.layout.orden_item, datos);
-	                this.context = context.getActivity();
-	            }
-	 
-	            public View getView(int position, View convertView, ViewGroup parent) {
-	            LayoutInflater inflater = context.getLayoutInflater();
-	            View item = inflater.inflate(R.layout.orden_item, null);
-	 
-	            TextView lblDe = (TextView)item.findViewById(R.id.orden_item);//este es campo de texto
-	            lblDe.setText(datos[position].getOrden());
-	 
-	            //TextView lblAsunto = (TextView)item.findViewById(R.id.LblAsunto);
-	            //lblAsunto.setText(datos[position].getAsunto());
-	 
-	            return(item);
-	        }
-	    }
-	    
-	    
+      			@Override
+      			public void onSwipeRight(ListView listView, int [] reverseSortedPositions) {
+      				//Aqui ponemos lo que hara el programa cuando deslizamos un item ha la derecha
+      				datos.remove(reverseSortedPositions[0]);
+      				adapter.notifyDataSetChanged();
+      				Orden Noelementos;
+      				if ((listener!=null)&&(datos.isEmpty())) {
+      					Noelementos=new Orden("0", "0", "0", "0");// si ya no hay elementos u ordenes
+    					listener.onOrdenSeleccionado(Noelementos);
+    				}
+      				else{
+	      				if ((listener!=null)) {
+	      					Noelementos=new Orden("-1", "0", "0", "0");//si solamente borro una orden pero todavía hay más en espera
+	    					listener.onOrdenSeleccionado(Noelementos);
+	    				}
+      				}
+      			}
+      		},true, false);
+
+      		//Escuchadores del listView
+      		ListaOrdenes.setOnTouchListener(touchListener);
+      		ListaOrdenes.setOnScrollListener(touchListener.makeScrollListener());
+        
+        
+        
+        
+    }
+		    
     public interface OrdenListener {
 		void onOrdenSeleccionado(Orden c);
 	}

@@ -5,11 +5,13 @@ public class Orden {
 	    private String id;
 	    private String orden;
 	    private String texto;
+	    private String mesa;
 	 
-	    public Orden(String de, String orden, String texto){
+	    public Orden(String de, String orden, String texto,String mesa){
 	        this.id = de;
 	        this.orden = orden;
 	        this.texto = texto;
+	        this.mesa = mesa;
 	    }
 	 
 	    public String getDe(){
@@ -22,6 +24,10 @@ public class Orden {
 	 
 	    public String getTexto(){
 	        return texto;
+	    }
+	    
+	    public String getMesa(){
+	        return mesa;
 	    }
 	
 }

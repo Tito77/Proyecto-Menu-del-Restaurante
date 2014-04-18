@@ -36,6 +36,7 @@ public class MainActivity extends FragmentActivity implements OrdenListener{
 		return true;
 	}*/
 	
+	//este metodo es implementado, pero la clase esta creada en el fragmente ListadoFragment
 	public void onOrdenSeleccionado(Orden c) {   // este metodo hace posible saber si se selecciono un item de la lista
 												// a la vez ejecuta que se cargue el texto en el campo designado
         boolean hayDetalle =
