@@ -1,0 +1,90 @@
+Endpoints
+
+Descripcion:	
+Gestion de los mesas
+EXECOP : Parametro para la operacion que se quiere ejecutar
+		 SEL(Select), INS(Insert), UPD(Update), DEL(Delete)
+
+MOD	   : Parametro para la indicacion del Modulo sobre el que se esta trabajando
+		 GT(Gestion de Ingredientes), GP(Gestion de Platillos), GO(Gestion de Menus)
+
+url															desc					params				GET/POST/PUT
+?EXECOP=SEL&MOD=GT 											Trae todas los			ninguno				GET
+															mesas
+
+?EXECOP=SEL&MOD=GT&GTKEY=(llave)    						Trae la informacion 	GTKEY: llave		GET
+															de un mesa en 			de la mesa.
+															especifico
+
+?EXECOP=INS&MOD=GT&GTNUM=(numero de mesa)					Metodo que inserta 		GTNUM: numero		GET  
+															una mesa 	 			de mesa
+
+?EXECOP=UPD&MOD=GT&GTNUM=(num)&GTEST=(estado)&GTKEY=(llave)	Actualiza los datos		GTNUM: Opcional		GET
+															de un mesa 				GTEST: Opcional
+																					GTKEY: Obligatorio
+
+?EXECOP=DEL&MOD=GT&GTKEY=(llave)							Borra una mesa 			GTKEY: Obligatorio	GET
+															de la base
+
+?EXECOP=RME&MOD=GT&GTKEY=(llave)							Reservar una			GTKEY: Obligatorio 	GET
+															mesa
+
+?EXECOP=DME&MOD=GT&GTKEY=(llave)							Desocupar una			GTKEY: Obligatorio 	GET
+															mesa
+-----------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------
+url															desc					params				GET/POST/PUT
+?EXECOP=SEL&MOD=GO 											Trae todas las			ninguno				GET
+															ordenes
+
+?EXECOP=SEL&MOD=GO&GOKEY=(llave)    						Trae la informacion 	GOKEY: llave		GET
+															de una orden en 		del menu.
+															especifico				(Opcional)
+
+?EXECOP=INS&MOD=GO&GOTOT=(valor)&GTKEY=(llave)				Metodo que inserta una	GOTOT: total(venta)	GET
+										 					orden con un total		GTKEY: llave de
+															y una mesa reservada	la mesa
+
+
+?EXECOP=UPD&MOD=GO&GOTOT=(val)&GTKEY=(llave)&GOKEY=(llave)	Actualiza los datos		GOTOT: Opcional		GET
+															de una orden			GOKEY: Obligatorio
+																					GTKEY: Obligatorio
+
+?EXECOP=DEL&MOD=GO&GOKEY=(llave)							Borra una orden			GOKEY: Obligatorio	GET
+															de la base		
+
+?EXECOP=SOR&MOD=GO&GOKEY=(llave) 							Orden servida			GOKEY: Obligatorio  GET	
+
+
+?EXECOP=COR&MOD=GO&GOKEY=(llave) 							Orden completa			GOKEY: Obligatorio  GET
+
+
+?EXECOP=IOR&MOD=GO&GOKEY=(llave) 							Orden incompleta		GOKEY: Obligatorio  GET	
+
+
+?EXECOP=NOR&MOD=GO&GOKEY=(llave) 							Orden cancelada			GOKEY: Obligatorio  GET
+
+
+?EXECOP=APL&MOD=GO&GOKEY=(llave)&GPKEY=(llave)				Agregar un platillo 	GOKEY: Obligatorio	GET
+&GPCAN=(val)&GONES=(desc)&GONPR=(promo)						a la orden 				GPKEY: Obligatorio
+																					GPCAN: Obligatorio(cantidad de platillos ordenados)
+																					GONES: Opcional(nota especial)
+																					GONPR: Opcional(nota promocion)
+
+?EXECOP=SPL&MOD=GO&GOKEY=(llave)							Selecciona los 			GOKEY: Obligatorio	GET
+															platillos de la orden	GPKEY: Obligatorio
+																					GPCAN: Obligatorio(cantidad de platillos ordenados)
+																					GONES: Opcional(nota especial)
+																					GONPR: Opcional(nota promocion)
+
+?EXECOP=BPL&MOD=GO&GOKEY=(llave)&GPKEY=(llave)				Borrar un platillo 		GOKEY: Obligatorio	GET
+															de la orden				GPKEY: Obligatorio
+																					GPCAN: Obligatorio(cantidad de platillos ordenados)
+																					GONES: Opcional(nota especial)
+																					GONPR: Opcional(nota promocion)
+
+
+
+?EXECOP=SOD&MOD=GO											Seleccionar las			ninguno				GET
+															ordenes disponibles
+															del dia
