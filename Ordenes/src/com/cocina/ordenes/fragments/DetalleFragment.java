@@ -52,16 +52,23 @@ public class DetalleFragment extends Fragment {
 	public void mostrarDetalle(String texto) { //nos ayuda posteriormente a asignar el contenido a mostrar en el cuadro de texto
         //TextView txtDetalle =
             //(TextView)getView().findViewById(R.id.test_detalle);
-		posicion_orden=Integer.parseInt(texto);
-		if((posicion_orden==0)||(posicion_orden==-1)){// si ya no hay elementos u ordenes o si solamente borro una orden pero todavía hay más en espera
-			listas.LlenadoListaconPlatillos(texto);
-			DetalleOrden Noelementos=new DetalleOrden("0", "No hay más Ordenes", "", "");
+	
+		if((texto.equals("0"))||(texto.equals("-1"))){// si ya no hay elementos u ordenes o si solamente borro una orden pero todavía hay más en espera
+			listas.CreaListadePlatillos(texto);
+			DetalleOrden Noelementos=new DetalleOrden();
+			Noelementos.setmKeyOrden("0");
+			Noelementos.setmCantidad("");
+			Noelementos.setmKeyOrden("");
+			Noelementos.setmKeyPlatillo("");
+			Noelementos.setmNombrePlatillo("No hay más Ordenes");
+			Noelementos.setmNotaEspecial("");
+			Noelementos.setmNotaPromocion("");
 
-			if(posicion_orden==0){ // si ya no hay elementos u ordenes
+			if(texto.equals("0")){ // si ya no hay elementos u ordenes
 				datos=new ArrayList<DetalleOrden>();
 		        datos.add(Noelementos);
 			}
-			if(posicion_orden==-1){//si solamente borro una orden pero todavía hay más en espera
+			if(texto.equals("-1")){//si solamente borro una orden pero todavía hay más en espera
 				datos=new ArrayList<DetalleOrden>();
 			}
 			
@@ -76,7 +83,7 @@ public class DetalleFragment extends Fragment {
 		}
 		else{
 			
-			listas.LlenadoListaconPlatillos(texto);
+			listas.CreaListadePlatillos(texto);
 	        datos=listas.getListaconPlatillos();
 		
 	        //txtDetalle.setText(texto);
@@ -102,15 +109,25 @@ public class DetalleFragment extends Fragment {
 	
 	 private ListView ListaPlatillos;
 	 int posicion_orden=1;
-	 String text_posicion_orden="1";
+	
 	 
 	 @Override
 	 public void onActivityCreated(Bundle state) {  //Cuando se crea el activity
 	        super.onActivityCreated(state);
-	        listas.LlenadoListaconPlatillos(text_posicion_orden);
 	        datos=listas.getListaconPlatillos();
-	      
-	     
+	         if(datos.isEmpty()){ // si ya no hay elementos u ordenes
+	        	 DetalleOrden Noelementos=new DetalleOrden();
+				Noelementos.setmKeyOrden("0");
+				Noelementos.setmCantidad("");
+				Noelementos.setmKeyOrden("");
+				Noelementos.setmKeyPlatillo("");
+				Noelementos.setmNombrePlatillo("No hay más Ordenes");
+				Noelementos.setmNotaEspecial("");
+				Noelementos.setmNotaPromocion("");
+				datos=new ArrayList<DetalleOrden>();
+		        datos.add(Noelementos);
+	         }
+
 	        
 	        ListaPlatillos = (ListView)getView().findViewById(R.id.Listado_Platillos); //Listado_Platillos es en el fragment_listado y hace referencia a ListaOrdenes
 	 

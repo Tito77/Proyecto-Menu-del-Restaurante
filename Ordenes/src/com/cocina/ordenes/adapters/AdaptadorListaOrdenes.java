@@ -41,8 +41,9 @@ public class AdaptadorListaOrdenes extends ArrayAdapter<Orden> {
     
     Orden elemento = listaOrden.get(position);
    
-    nombre_orden.setText(elemento.getOrden());
-    numero_mesa.setText("Mesa: #"+elemento.getMesa());
+    //nombre_orden.setText(elemento.getOrden());
+    nombre_orden.setText("Orden");
+    numero_mesa.setText("Mesa: #"+elemento.getmNumeroMesa());
     
     return(item);
 }

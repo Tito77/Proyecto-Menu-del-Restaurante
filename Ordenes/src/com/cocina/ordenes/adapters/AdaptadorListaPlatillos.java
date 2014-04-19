@@ -42,9 +42,9 @@ public class AdaptadorListaPlatillos extends ArrayAdapter<DetalleOrden> {
  		
 	    DetalleOrden elemento = listaPlatillos.get(position);
 	    	    
-	    texto_platillos.setText(elemento.getPlatillo());
-		texto_cantidad.setText(elemento.getCantidad());
-		texto_descripcion.setText(elemento.getTexto());
+	    texto_platillos.setText(elemento.getmNombrePlatillo());
+		texto_cantidad.setText(elemento.getmCantidad());
+		texto_descripcion.setText(elemento.getmNotaEspecial());
 	    
 
 	    return(item);

@@ -3,24 +3,92 @@ package com.cocina.ordenes.estructuras;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import com.google.gson.Gson;
+
+
+
+import android.os.StrictMode;
+import android.util.Log;
+
 public class ListadeOrdenes {
 
 	public ListadeOrdenes(){
-		LlenadoListaOrden();
+		//LlenadoListaOrden();
+		CreaListaOrdenes();
 	}
 	
 	public ArrayList<Orden> ListaconOrdenes= new ArrayList<Orden>();
 	public ArrayList<DetalleOrden> ListaconPlatillos= new ArrayList<DetalleOrden>();
 	
 	/**********************ListaconOrdenes*******************************************************/
-	public void LlenadoListaOrden(){  //estos son elementos estáticos que se utilizaran en el ListadoFragment
-		ListaconOrdenes.add(new Orden("1", "Orden 1", "Texto de la Orden 1","14"));
-		ListaconOrdenes.add(new Orden("2", "Orden 2", "Texto de la Orden 2","4"));
-		ListaconOrdenes.add(new Orden("3", "Orden 3", "Texto de la Orden 3","7"));
-		ListaconOrdenes.add(new Orden("4", "Orden 4", "Texto de la Orden 4","8"));
-		ListaconOrdenes.add(new Orden("5", "Orden 5", "Texto de la Orden 5","VIP"));
 
+HttpClient httpClient = new DefaultHttpClient();
+	HttpGet _getOrden,_getMesa;
+	Orden ElementoOrden=new Orden();;
+	JSONObject respOrden_JSON;
+	JSONArray resp_arrayOrden_JSON;
+	
+	
+	public void CreaListaOrdenes(){
+		
+
+		ListaconOrdenes= new ArrayList<Orden>();
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+	    StrictMode.setThreadPolicy(policy);
+		//_getOrden = new HttpGet("http://solid-clarity-553.appspot.com/?EXECOP=SOD&MOD=GO");
+	    _getOrden = new HttpGet("http://solid-clarity-553.appspot.com/?EXECOP=SEL&MOD=GO");
+	    _getOrden.setHeader("content-type", "application/json");
+    
+	    try
+		{
+		    HttpResponse resp = httpClient.execute(_getOrden);
+		    String respStr = EntityUtils.toString(resp.getEntity());
+		    Log.v("ServicioRestOrden",respStr);
+		    
+		    respOrden_JSON = new JSONObject(respStr);
+		    resp_arrayOrden_JSON = respOrden_JSON.getJSONArray("RETURNVALUE");
+		    
+		    
+	       /* ElementoOrden = new Gson().fromJson(resp_arrayOrden_JSON.getString(1), Orden.class);
+	        Log.v("Menú cargado",ElementoOrden.getmKeyValue());
+	        ListaconOrdenes.add(ElementoOrden);*/
+		    
+		    
+		    
+		    int lenth_array=resp_arrayOrden_JSON.length();
+	        for(int i=0;i<lenth_array;i++){
+	        	Orden ElementoOrden = new Gson().fromJson(resp_arrayOrden_JSON.getString(i), Orden.class);
+	        	
+	        	_getMesa = new HttpGet("http://solid-clarity-553.appspot.com/?EXECOP=SEL&MOD=GT&GTKEY="+ElementoOrden.getmKeyMesa());
+	        	_getMesa.setHeader("content-type", "application/json");
+			        
+			        HttpResponse resp2 = httpClient.execute(_getMesa);
+			        String respStr2 = EntityUtils.toString(resp2.getEntity());
+			        Log.v("ServicioRestMesa",respStr2);
+			        JSONObject respMesa_JSON = new JSONObject(respStr2);
+			        JSONArray resp_arrayMesa_JSON = respMesa_JSON.getJSONArray("RETURNVALUE");
+			        Mesa temp = new Gson().fromJson(resp_arrayMesa_JSON.getString(0), Mesa.class);
+	        	ElementoOrden.setmNumeroMesa(temp.getmNumeroMesa());
+	        	
+		        Log.v("Menú cargado",ElementoOrden.getmKeyValue());
+		        ListaconOrdenes.add(ElementoOrden);
+		        CreaListadePlatillos(ElementoOrden.getmKeyValue());
+	        }
+		}
+	    catch(Exception ex)
+		{
+		        Log.e("ServicioRest","Error!", ex);
+		}
 	}
+	
 	
 	@SuppressWarnings("unchecked")
 	public ArrayList<Orden> getListaconOrdenes() {
@@ -35,15 +103,7 @@ public class ListadeOrdenes {
 	}
 	/**********************ListaconPlatillos*******************************************************/
 	
-	
-	public void LlenadoListaconPlatillos(){  //estos son elementos estáticos que se utilizaran en el ListadoFragment
-		ListaconPlatillos.add(new DetalleOrden("1", "Platillo 1", "Texto de notas especiales 1","5"));
-		ListaconPlatillos.add(new DetalleOrden("2", "Platillo 2", "Texto de notas especiales 2","3"));
-		ListaconPlatillos.add(new DetalleOrden("3", "Platillo 3", "Texto de notas especiales 3","5"));
-		ListaconPlatillos.add(new DetalleOrden("4", "Platillo 4", "Texto de notas especiales 4","6"));
-		ListaconPlatillos.add(new DetalleOrden("5", "Platillo 5", "Texto de notas especiales 5","3"));
 
-	}
 	
 	@SuppressWarnings("unchecked")
 	public ArrayList<DetalleOrden> getListaconPlatillos() {
@@ -59,13 +119,6 @@ public class ListadeOrdenes {
 	
 	
 	
-	
-	//Convertir el arrreglo a Arraylist, eliminar la orden y volver a convertirlo en arreglo 
-	/*public void eliminarOrden(int posicion, Orden[] ListaActual){ 
-	ArrayList listanuevadeOrdenes = (ArrayList) Arrays.asList(ListaActual); //Convertimos 
-	listanuevadeOrdenes.remove(posicion); //Eliminamos la orden concreto, va de 0 a n-1
-	ListaActual = (Orden[]) listanuevadeOrdenes.toArray(new Orden[listanuevadeOrdenes.size()]); //Cambiamos el arreglo por el nuevo sin la orden borrada 
-	}*/
 	
 	
 	//Convertir el arrreglo a Arraylist, eliminar la orden y volver a convertirlo en arreglo 
@@ -102,59 +155,75 @@ public class ListadeOrdenes {
 	
 	
 	
-	@SuppressWarnings("unchecked")
-	public void LlenadoListaconPlatillos(String id_Orden){
-		int number=Integer.parseInt(id_Orden);
-		switch (number) {
-		case 1:
-			ListaconPlatillos.clear();
-                ListaconPlatillos.add(new DetalleOrden("1", "Platillo 1", "Texto de notas especiales 1","5"));
-                ListaconPlatillos.add(new DetalleOrden("2", "Platillo 2", "Texto de notas especiales 2","3"));
-                ListaconPlatillos.add(new DetalleOrden("3", "Platillo 3", "Texto de notas especiales 3","5"));
-                ListaconPlatillos.add(new DetalleOrden("4", "Platillo 4", "Texto de notas especiales 4","6"));
-                ListaconPlatillos.add(new DetalleOrden("5", "Platillo 5", "Texto de notas especiales 5","3"));
-			break;
-		case 2:
-			ListaconPlatillos.clear();
-	                ListaconPlatillos.add(new DetalleOrden("1", "Platillo 21", "Texto de notas especiales 21","5"));
-	                ListaconPlatillos.add(new DetalleOrden("2", "Platillo 22", "Texto de notas especiales 22","3"));
-	                ListaconPlatillos.add(new DetalleOrden("3", "Platillo 23", "Texto de notas especiales 23","5"));
-	                ListaconPlatillos.add(new DetalleOrden("4", "Platillo 24", "Texto de notas especiales 24","6"));
-	                ListaconPlatillos.add(new DetalleOrden("5", "Platillo 25", "Texto de notas especiales 25","3"));
-			break;
-		case 3:
-			ListaconPlatillos.clear();
-	                ListaconPlatillos.add(new DetalleOrden("1", "Platillo 31", "Texto de notas especiales 31","5"));
-	                ListaconPlatillos.add(new DetalleOrden("2", "Platillo 32", "Texto de notas especiales 32","3"));
-	                ListaconPlatillos.add(new DetalleOrden("3", "Platillo 33", "Texto de notas especiales 33","5"));
-	                ListaconPlatillos.add(new DetalleOrden("4", "Platillo 34", "Texto de notas especiales 34","6"));
-	                ListaconPlatillos.add(new DetalleOrden("5", "Platillo 35", "Texto de notas especiales 35","3"));
-			break;
-		case 4:
-			ListaconPlatillos.clear();
-	                ListaconPlatillos.add(new DetalleOrden("1", "Platillo 41", "Texto de notas especiales 41","5"));
-	                ListaconPlatillos.add(new DetalleOrden("2", "Platillo 42", "Texto de notas especiales 42","3"));
-	                ListaconPlatillos.add(new DetalleOrden("3", "Platillo 43", "Texto de notas especiales 43","5"));
-	                ListaconPlatillos.add(new DetalleOrden("4", "Platillo 44", "Texto de notas especiales 44","6"));
-	                ListaconPlatillos.add(new DetalleOrden("5", "Platillo 45", "Texto de notas especiales 45","3"));
-			break;
-		case 5:
-			ListaconPlatillos.clear();
-	                ListaconPlatillos.add(new DetalleOrden("1", "Platillo 51", "Texto de notas especiales 51","5"));
-	                ListaconPlatillos.add(new DetalleOrden("2", "Platillo 52", "Texto de notas especiales 52","3"));
-	                ListaconPlatillos.add(new DetalleOrden("3", "Platillo 53", "Texto de notas especiales 53","5"));
-	                ListaconPlatillos.add(new DetalleOrden("4", "Platillo 54", "Texto de notas especiales 54","6"));
-	                ListaconPlatillos.add(new DetalleOrden("5", "Platillo 55", "Texto de notas especiales 55","3"));
-			break;
+	
+	
+	
+	
+	
+	
+	HttpGet _getListaPlatillos,_getPlatillos;
+	Orden ElementoDetalleOrden=new Orden();;
+	JSONObject respDetalleOrden_JSON;
+	JSONArray resp_arrayDetalleOrden_JSON;
+	
+	
+	public void CreaListadePlatillos(String Posicion_mKeyValue){
+		
 
-		default:
-			ListaconPlatillos.clear();
-            ListaconPlatillos.add(new DetalleOrden("1", "Platillo 1", "Texto de notas especiales 1","5"));
-            ListaconPlatillos.add(new DetalleOrden("2", "Platillo 2", "Texto de notas especiales 2","3"));
-            ListaconPlatillos.add(new DetalleOrden("3", "Platillo 3", "Texto de notas especiales 3","5"));
-            ListaconPlatillos.add(new DetalleOrden("4", "Platillo 4", "Texto de notas especiales 4","6"));
-            ListaconPlatillos.add(new DetalleOrden("5", "Platillo 5", "Texto de notas especiales 5","3"));
-			break;
+		ListaconPlatillos= new ArrayList<DetalleOrden>();
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+	    StrictMode.setThreadPolicy(policy);
+		
+	    _getListaPlatillos = new HttpGet("http://solid-clarity-553.appspot.com/?EXECOP=SPL&MOD=GO&GOKEY="+Posicion_mKeyValue);
+	    _getListaPlatillos.setHeader("content-type", "application/json");
+    
+	    try
+		{
+		    HttpResponse resp = httpClient.execute(_getListaPlatillos);
+		    String respStr = EntityUtils.toString(resp.getEntity());
+		    Log.v("ServicioRestListaPlatillos",respStr);
+		    
+		    respDetalleOrden_JSON = new JSONObject(respStr);
+		    resp_arrayDetalleOrden_JSON = respDetalleOrden_JSON.getJSONArray("RETURNVALUE");
+
+		    int lenth_array=resp_arrayDetalleOrden_JSON.length();
+	        for(int i=0;i<lenth_array;i++){
+	        	DetalleOrden ElementoDetalleOrden = new Gson().fromJson(resp_arrayDetalleOrden_JSON.getString(i), DetalleOrden.class);
+	        	
+	        	_getPlatillos = new HttpGet("http://modern-door-542.appspot.com/?EXECOP=SEL&MOD=GP&GPKEY="+ElementoDetalleOrden.getmKeyPlatillo());
+	        	_getPlatillos.setHeader("content-type", "application/json");
+			        
+			        HttpResponse resp2 = httpClient.execute(_getPlatillos);
+			        String respStr2 = EntityUtils.toString(resp2.getEntity());
+			        Log.v("ServicioRestMesa",respStr2);
+			        JSONObject respMesa_JSON = new JSONObject(respStr2);
+			        JSONArray resp_arrayMesa_JSON = respMesa_JSON.getJSONArray("RETURNVALUE");
+			        Platillo temp = new Gson().fromJson(resp_arrayMesa_JSON.getString(0), Platillo.class);
+	        	ElementoDetalleOrden.setmNombrePlatillo(temp.getmNombrePlatillo());
+	        	
+		        Log.v("Platillo cargado",ElementoDetalleOrden.getmKeyOrden());
+		        ListaconPlatillos.add(ElementoDetalleOrden);
+		        
+	        }
+		}
+	    catch(Exception ex)
+		{
+		        Log.e("ServicioRest","Error!", ex);
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

@@ -44,13 +44,13 @@ public class MainActivity extends FragmentActivity implements OrdenListener{
  
         if(hayDetalle) {
             ((DetalleFragment)getSupportFragmentManager()
-                .findFragmentById(R.id.frag_detalle)).mostrarDetalle(c.getDe());
+                .findFragmentById(R.id.frag_detalle)).mostrarDetalle(c.getmKeyValue());
         }
-        else {
+       /* else {
             Intent i = new Intent(this, DetalleActivity.class);
-            i.putExtra(DetalleActivity.EXTRA_TEXTO, c.getTexto());
+            i.putExtra(DetalleActivity.EXTRA_TEXTO, c.getmTotal());
             startActivity(i);
-        }
+        }*/
     }
 	
 

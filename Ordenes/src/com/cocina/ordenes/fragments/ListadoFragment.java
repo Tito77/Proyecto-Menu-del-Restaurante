@@ -97,12 +97,14 @@ public class ListadoFragment extends Fragment {
       				adapter.notifyDataSetChanged();
       				Orden Noelementos;
       				if ((listener!=null)&&(datos.isEmpty())) {
-      					Noelementos=new Orden("0", "0", "0", "0");// si ya no hay elementos u ordenes
+      					Noelementos=new Orden();// si ya no hay elementos u ordenes
+      					Noelementos.setmKeyValue("0");
     					listener.onOrdenSeleccionado(Noelementos);
     				}
       				else{
 	      				if ((listener!=null)) {
-	      					Noelementos=new Orden("-1", "0", "0", "0");//si solamente borro una orden pero todavía hay más en espera
+	      					Noelementos=new Orden();//si solamente borro una orden pero todavía hay más en espera
+	      					Noelementos.setmKeyValue("-1");
 	    					listener.onOrdenSeleccionado(Noelementos);
 	    				}
       				}
