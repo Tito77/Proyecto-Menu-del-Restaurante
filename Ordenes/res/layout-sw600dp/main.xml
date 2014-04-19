@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#7F0000"
     android:orientation="horizontal" >
 
     <fragment
@@ -13,9 +14,9 @@
 
     <FrameLayout
         android:layout_width="1dp"
-        android:layout_height="match_parent" 
-		android:background="#3E83A4"
-        >
+        android:layout_height="match_parent"
+        android:background="#FFFFFF" >
+
     </FrameLayout>
 	
     

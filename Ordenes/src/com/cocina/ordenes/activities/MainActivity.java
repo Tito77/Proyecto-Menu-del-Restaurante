@@ -23,7 +23,7 @@ public class MainActivity extends FragmentActivity implements OrdenListener{
 			//ListadoFragment primerfragmento= new ListadoFragment();
 			ListadoFragment primerfragmento= (ListadoFragment)getSupportFragmentManager().findFragmentById(R.id.frag_listado);;
 			primerfragmento.setOrdenListener(this);
-			//getSupportFragmentManager().beginTransaction().add(R.id.contenedor, primerfragmento).commit();
+		//	getSupportFragmentManager().beginTransaction().add(R.id.contenedor, primerfragmento).commit();
 		//}
 		//e.o.c se esta ejecutando en una tablet
 		

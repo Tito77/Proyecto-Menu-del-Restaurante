@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class AdaptadorListaOrdenes extends ArrayAdapter<Orden> {
@@ -37,13 +38,37 @@ public class AdaptadorListaOrdenes extends ArrayAdapter<Orden> {
  // Definimos los elementos que tiene nuestro layout
     TextView nombre_orden = (TextView)item.findViewById(R.id.orden_item);//este es campo de texto
     TextView numero_mesa = (TextView)item.findViewById(R.id.orden_item_mesa);//este es campo de texto
-    
+    ImageView imagen= (ImageView)item.findViewById(R.id.Estado_imagen);
     
     Orden elemento = listaOrden.get(position);
    
     //nombre_orden.setText(elemento.getOrden());
     nombre_orden.setText("Orden");
     numero_mesa.setText("Mesa: #"+elemento.getmNumeroMesa());
+   
+    if(elemento.getmEstadoServido().equals("I")){
+    	imagen.setImageResource(R.drawable.naranja);
+    }
+    else{
+    	 if(elemento.getmEstadoServido().equals("C")){
+    	    	imagen.setImageResource(R.drawable.amarillo);
+    	    }
+    	 else
+    	 {
+    		 if(elemento.getmEstadoServido().equals("S")){
+     	    	imagen.setImageResource(R.drawable.verde);
+     	    	}
+    		 else{
+    			 if(elemento.getmEstadoServido().equals("N")){
+    	    	    	imagen.setImageResource(R.drawable.esmeralda);
+    	    	    }
+    			 else
+    			 	{
+    				 imagen.setImageResource(R.drawable.naranja);
+    			 	}
+    		 }
+    	 }
+    }
     
     return(item);
 }
