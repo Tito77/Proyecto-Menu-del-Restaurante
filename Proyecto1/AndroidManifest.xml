@@ -33,6 +33,10 @@
             android:name="com.moviles.proy1.InfoMenuActivity"
             android:label="@string/title_activity_info_menu" >
         </activity>
+        <activity
+            android:name="com.moviles.proy1.VerOrdenActivity"
+            android:label="@string/title_activity_ver_orden" >
+        </activity>
     </application>
 
 </manifest>

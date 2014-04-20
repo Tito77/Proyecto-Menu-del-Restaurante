@@ -2,6 +2,15 @@ package com.moviles.clases;
 
 import java.util.ArrayList;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONObject;
+
+import android.util.Log;
+
 public class Orden {
 	
 	private String llave;
@@ -33,24 +42,51 @@ public class Orden {
 		this.listaPlatillos = listaPlatillos;
 	}
 	
-	public int calcularTotal()
+	public void calcularTotal()
 	{
 		int iTotal = 0;
 		
 		for(int i = 0; i<listaPlatillos.size(); i++)
 		{
 			Platillo temp = listaPlatillos.get(i).getmPlatillo();
-			iTotal += Integer.parseInt(temp.get_sPrecio());
+			int cant = Integer.parseInt(listaPlatillos.get(i).getmCantidad());
+			int precio = Integer.parseInt(temp.get_sPrecio());
+			iTotal = iTotal + (cant * precio);
 		}
-		
-		return iTotal;
+		setTotal(iTotal);
 	}
 	
 	public void agregarPlatillo(PlatilloXOrden pla){
 		
 		this.listaPlatillos.add(pla);
+		Log.v("Platillo insertado",pla.getmPlatillo().get_sNombre());
+		Log.v("Platillo insertado",pla.getmCantidad());
+		Log.v("Platillo insertado", "Precio: " + pla.getmPlatillo().get_sPrecio());
+		calcularTotal();
+		imprimirEstado();
+	}
+	
+	public void quitarPlatillo(int pos){
+		this.listaPlatillos.remove(pos);
+		calcularTotal();
+		imprimirEstado();
+	}
+	
+	public void imprimirEstado(){
+		
+		Log.v("Total Orden", total+"");
+		String platillos = "[ ";
+		for(int i = 0; i < listaPlatillos.size(); i++){
+			PlatilloXOrden temp = listaPlatillos.get(i);
+			Platillo temp2 = temp.getmPlatillo();
+			platillos = platillos + temp2.get_sLlave() + " ][ ";
+		}
+		platillos = platillos + " ]";
+		Log.v("Platillos Orden", platillos);
 		
 	}
+	
+	
 	
 	
 	

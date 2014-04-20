@@ -20,14 +20,15 @@ import com.moviles.clases.Menu;
 import com.moviles.clases.Mesa;
 import com.moviles.clases.Orden;
 import com.moviles.clases.Platillo;
+import com.moviles.clases.PlatilloXOrden;
 
 
 public class CustomContext extends Application {
 	
 	HttpClient httpClient = new DefaultHttpClient();
-	HttpGet _getOrden, _getMenu, _getPlatillos, _getIngredientes, _getMesa;
+	HttpGet _getMenu, _getPlatillos, _getIngredientes, _getMesa;
 	Menu _mMenu;
-	String llaveOrden;
+	String llaveOrden, llaveMesa;
 	ArrayList<Platillo> lPlatillos;
 	ArrayList<Menu> lMenus;
 	JSONObject respJSON, platillosJSON, ingJSON;
@@ -49,13 +50,7 @@ public class CustomContext extends Application {
 	    _getMesa = new HttpGet("http://solid-clarity-553.appspot.com/?EXECOP=SEL&MOD=GT");
 	    _getMesa.setHeader("content-type","application/json");
 	    
-	    String llaveMesa = getMesaKey(_getMesa);
-	    
-	    _getOrden = new HttpGet("http://solid-clarity-553.appspot.com/?EXECOP=INS&MOD=GO&GOTOT=0&GTKEY="+llaveMesa);
-	    _getOrden.setHeader("content-type", "application/json");
-	    
-	    llaveOrden = getOrdenKey(_getOrden);
-	    _mOrden.setLlave(llaveOrden);
+	    llaveMesa = getMesaKey(_getMesa);
 		
 		_getMenu = new HttpGet("http://modern-door-542.appspot.com/?EXECOP=SME&MOD=GM&");
 		_getMenu.setHeader("content-type", "application/json");
@@ -111,8 +106,14 @@ public class CustomContext extends Application {
 		}
 		
 	}
-
-	private String getOrdenKey(HttpGet _getOrden2) {
+	
+	public String getOrdenKey() {
+		
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+	    StrictMode.setThreadPolicy(policy);
+		
+		HttpGet _getOrden2 = new HttpGet("http://solid-clarity-553.appspot.com/?EXECOP=INS&MOD=GO&GOTOT="+this._mOrden.getTotal()+"&GTKEY="+llaveMesa);
+	    _getOrden2.setHeader("content-type", "application/json");
 		String llave = new String();
 		
 		try
@@ -159,6 +160,52 @@ public class CustomContext extends Application {
 			Log.e("ServicioRest","Error al cargar llave de mesa",ex);
 		}
 		return llave;
+	}
+	
+public void enviarOrden(String sLlave) {
+	
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+    	StrictMode.setThreadPolicy(policy);
+		
+		_mOrden.setLlave(sLlave);
+		
+		for(int i=0;i<_mOrden.getListaPlatillos().size();i++){
+			
+			PlatilloXOrden pxoTemp = _mOrden.getListaPlatillos().get(i);
+			Platillo pTemp = pxoTemp.getmPlatillo();
+			String sLlaveP = pTemp.get_sLlave();
+			String sCant = pxoTemp.getmCantidad();
+			String sNota = pxoTemp.getmNotaEspecial();
+			sNota.replace(' ', '_');
+			String sPromo = pxoTemp.getmNotaPromocion();
+			
+			HttpGet _getOrden = new HttpGet(
+					"http://solid-clarity-553.appspot.com/?EXECOP=APL&MOD=GO&GOKEY="+_mOrden.getLlave()
+					+"&GPKEY="+sLlaveP
+					+"&GPCAN="+sCant
+					+"&GONES="+sNota
+					+"&GONPR="+sPromo
+					);
+		    _getOrden.setHeader("content-type", "application/json");
+		    
+		    try
+			{
+				HttpResponse respOrden = httpClient.execute(_getOrden);
+		        String ordenString = EntityUtils.toString(respOrden.getEntity());
+		        Log.v("ServicioRestOrden",ordenString);
+		        
+		        JSONObject ordenJSON = new JSONObject(ordenString);
+		        String result = ordenJSON.getString("RETURNVALUE");
+		        Log.v("Resultado de orden",result);
+			}
+			catch(Exception e)
+			{
+				Log.e("ServicioRest","Error al enviar orden", e);
+			}
+			
+		}
+		Log.v("LLAVE DE ORDEN",_mOrden.getLlave());
+		
 	}
 
 }

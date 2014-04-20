@@ -37,24 +37,28 @@ public class InfoPlatilloActivity extends Activity {
 		((TextView)findViewById(R.id.txPrecio)).setText("Precio: ₡"+seleccionado.get_sPrecio());
 		((ListView)findViewById(R.id.listIngredientes)).setAdapter(_adapter);
 		
-		final String sCantidad = ((EditText)findViewById(R.id.cantidadField)).getText().toString();
-		final String sNota = ((EditText)findViewById(R.id.notaField)).getText().toString();
 		
 		findViewById(R.id.buttonOrdenar).setOnClickListener(new OnClickListener(){
 
 			@Override
 			public void onClick(View v) {
 				PlatilloXOrden platillo = new PlatilloXOrden();
-				platillo.setmCantidad(sCantidad);
+				EditText etCantidad = (EditText)findViewById(R.id.cantidadField);
+				EditText etNota = (EditText)findViewById(R.id.notaField);
+				String sCantidad = etCantidad.getText().toString();
+				String sNota = etNota.getText().toString();
+				if(sCantidad.equals(null)){
+					platillo.setmCantidad("1");
+				}
+				else{
+					platillo.setmCantidad(sCantidad);
+				}
 				platillo.setmNotaEspecial(sNota);
 				platillo.setmPlatillo(seleccionado);
 				insertarPlatillo(platillo);
-				//mContext._mOrden.agregarPlatillo(platillo);
 				finish();
 			}
 		});
-		
-		//finish();
 		
 	}
 

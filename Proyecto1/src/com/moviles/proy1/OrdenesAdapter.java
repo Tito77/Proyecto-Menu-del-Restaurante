@@ -1,6 +1,7 @@
 package com.moviles.proy1;
 
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +52,7 @@ public class OrdenesAdapter extends BaseAdapter {
 		viewCantidad.setText(platilloEnFila.getmCantidad()+"");
 		fieldNota.setText(platilloEnFila.getmNotaEspecial());
 		
-		root.findViewById(R.id.buttonOrdenar).setOnClickListener(new OnClickListener() {
+		root.findViewById(R.id.buttonQuitar).setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
@@ -64,8 +65,8 @@ public class OrdenesAdapter extends BaseAdapter {
 
 	protected void quitar(int position) {
 		// TODO Auto-generated method stub
-		this.mContext._mOrden.getListaPlatillos().remove(position);
-		
+		this.mContext._mOrden.quitarPlatillo(position);
+		notifyDataSetChanged();
 	}
 
 }

@@ -3,6 +3,7 @@ package com.moviles.proy1;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -38,9 +39,8 @@ public class MainActivity extends Activity {
 		int id = item.getItemId();
 		if(id == R.id.action_ordenar)
 		{
-			VentanaVerOrden fragment = new VentanaVerOrden();
-			fragment.mListener = (IVerOrdenListener) getFragmentManager().findFragmentByTag("lista");
-			fragment.show(getFragmentManager(), "ordenar");
+			Intent intOrden = new Intent(this, VerOrdenActivity.class);
+			startActivity(intOrden);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
