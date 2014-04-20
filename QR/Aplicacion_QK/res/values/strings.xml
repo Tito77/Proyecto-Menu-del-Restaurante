@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">La Cuchara Alegre</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_scan">Escanear promoción</string>
+    <string name="title_activity_info_platillo">InfoPlatilloActivity</string>
+    <string name="title_activity_info_menu">InfoMenuActivity</string>
+    <string name="title_activity_camara">Camara</string>
+    <string name="title_activity_repuesta">Repuesta</string>
+    <string name="title_activity_camara__qr">Camara_QR</string>
+
+</resources>
