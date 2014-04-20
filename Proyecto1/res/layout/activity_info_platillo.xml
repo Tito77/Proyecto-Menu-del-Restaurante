@@ -28,9 +28,8 @@
         <ImageView
             android:id="@+id/imageView1"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="fitXY"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.00"
             android:src="@drawable/ic_placeholder" />
 
         <TextView
@@ -44,29 +43,71 @@
 
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/listIngredientes"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="193dp"
-        android:layout_weight="0.30" >
-    </ListView>
+        android:layout_height="wrap_content" >
+
+        <ListView
+            android:id="@+id/listIngredientes"
+            android:layout_width="525dp"
+            android:layout_height="193dp" >
+
+        </ListView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Notas:"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#FFFFFF" />
+
+            <EditText
+                android:id="@+id/notaField"
+                android:layout_width="462dp"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF"
+                android:ems="10"
+                android:inputType="textMultiLine" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/layoutButtons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cantidad: "
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#FFFFFF" />
+
+        <EditText
+            android:id="@+id/cantidadField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            android:background="#FFFFFF" >
+
+            <requestFocus />
+        </EditText>
+
         <Button
             android:id="@+id/buttonOrdenar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ordenar" />
-
-        <Button
-            android:id="@+id/buttonPersonal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Personalizar" />
     </LinearLayout>
 
 </LinearLayout>

@@ -36,13 +36,13 @@ public class MainActivity extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		int id = item.getItemId();
-		/*if(id == R.id.action_crear)
+		if(id == R.id.action_ordenar)
 		{
-			VentanaCrearUsuario fragment = new VentanaCrearUsuario();
-			fragment.mListener = (IContactoCreadoListener) getFragmentManager().findFragmentByTag("lista");
-			fragment.show(getFragmentManager(), "crear");
+			VentanaVerOrden fragment = new VentanaVerOrden();
+			fragment.mListener = (IVerOrdenListener) getFragmentManager().findFragmentByTag("lista");
+			fragment.show(getFragmentManager(), "ordenar");
 			return true;
-		}*/
+		}
 		return super.onOptionsItemSelected(item);
 	}
 

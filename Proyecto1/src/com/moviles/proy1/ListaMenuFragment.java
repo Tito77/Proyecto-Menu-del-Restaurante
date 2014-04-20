@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-public class ListaMenuFragment extends ListFragment {
+public class ListaMenuFragment extends ListFragment implements IVerOrdenListener {
 	
 	private CustomContext mContext;
 	
@@ -36,6 +36,13 @@ public class ListaMenuFragment extends ListFragment {
 		Intent intent = new Intent(getActivity(), InfoMenuActivity.class);
 		intent.putExtra("posicion", position);
 		startActivity(intent);
+	}
+
+	@Override
+	public void verOrden() {
+		// TODO Auto-generated method stub
+		
+		
 	}
 
 }

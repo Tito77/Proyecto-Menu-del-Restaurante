@@ -17,18 +17,22 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.moviles.clases.Ingrediente;
 import com.moviles.clases.Menu;
+import com.moviles.clases.Mesa;
+import com.moviles.clases.Orden;
 import com.moviles.clases.Platillo;
 
 
 public class CustomContext extends Application {
 	
 	HttpClient httpClient = new DefaultHttpClient();
-	HttpGet _getMenu, _getPlatillos, _getIngredientes;
+	HttpGet _getOrden, _getMenu, _getPlatillos, _getIngredientes, _getMesa;
 	Menu _mMenu;
+	String llaveOrden;
 	ArrayList<Platillo> lPlatillos;
 	ArrayList<Menu> lMenus;
 	JSONObject respJSON, platillosJSON, ingJSON;
 	JSONArray respJSON2, platillosJSON2, ingJSON2;
+	Orden _mOrden;
 	
 	public void onCreate()
 	{
@@ -36,9 +40,22 @@ public class CustomContext extends Application {
 		_mMenu = new Menu();
 		lPlatillos = new ArrayList<Platillo>();
 		lMenus = new ArrayList<Menu>();
+		llaveOrden = new String();
+		_mOrden = new Orden();
 		
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 	    StrictMode.setThreadPolicy(policy);
+	    
+	    _getMesa = new HttpGet("http://solid-clarity-553.appspot.com/?EXECOP=SEL&MOD=GT");
+	    _getMesa.setHeader("content-type","application/json");
+	    
+	    String llaveMesa = getMesaKey(_getMesa);
+	    
+	    _getOrden = new HttpGet("http://solid-clarity-553.appspot.com/?EXECOP=INS&MOD=GO&GOTOT=0&GTKEY="+llaveMesa);
+	    _getOrden.setHeader("content-type", "application/json");
+	    
+	    llaveOrden = getOrdenKey(_getOrden);
+	    _mOrden.setLlave(llaveOrden);
 		
 		_getMenu = new HttpGet("http://modern-door-542.appspot.com/?EXECOP=SME&MOD=GM&");
 		_getMenu.setHeader("content-type", "application/json");
@@ -93,6 +110,55 @@ public class CustomContext extends Application {
 		        Log.e("ServicioRest","Error!", ex);
 		}
 		
+	}
+
+	private String getOrdenKey(HttpGet _getOrden2) {
+		String llave = new String();
+		
+		try
+		{
+			HttpResponse respOrden = httpClient.execute(_getOrden2);
+	        String ordenString = EntityUtils.toString(respOrden.getEntity());
+	        Log.v("ServicioRestOrden",ordenString);
+	        
+	        JSONObject ordenJSON = new JSONObject(ordenString);
+	        llave = ordenJSON.getString("RETURNVALUE");
+		}
+		catch(Exception e)
+		{
+			Log.e("ServicioRest","Error al cargar llave de orden", e);
+		}
+		
+		return llave;
+	}
+
+	private String getMesaKey(HttpGet _getMesa2) {
+		String llave = new String();
+		
+		try
+		{
+			HttpResponse respMesa = httpClient.execute(_getMesa2);
+	        String mesaString = EntityUtils.toString(respMesa.getEntity());
+	        Log.v("ServicioRestMesa",mesaString);
+	        
+	        JSONObject mesaJSON = new JSONObject(mesaString);
+	        JSONArray mesaJSON2 = mesaJSON.getJSONArray("RETURNVALUE");
+	        for(int i=0; i<mesaJSON2.length(); i++)
+	        {
+	        	Mesa temp = new Gson().fromJson(mesaJSON2.getString(i), Mesa.class);
+	        	if (temp.getmNumeroMesa().equals("1"))
+	        	{
+	        		llave = temp.getmKeyValue();
+	        		break;
+	        	}
+	        	
+	        }
+		}
+		catch(Exception ex)
+		{
+			Log.e("ServicioRest","Error al cargar llave de mesa",ex);
+		}
+		return llave;
 	}
 
 }
