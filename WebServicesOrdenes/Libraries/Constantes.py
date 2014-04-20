@@ -27,11 +27,13 @@ class Constantes:
 	mGOEstadoCompleto   = "C"
 	mGOEstadoIncompleto = "I"
 	mGOEstadoCancelado  = "N"
+	mGOEstadoPagado 	= "P"
 
 	mGOOperacionServido    = "SOR"
 	mGOOperacionCompleto   = "COR"
 	mGOOperacionIncompleto = "IOR"
-	mGOOPeracionCancelado  = "NOR"
+	mGOOperacionCancelado  = "NOR"
+	mGOOperacionPagado	   = "POR"
 
 	mGOOperacionAgregarPlatillo     = "APL"
 	mGOOperacionBorrarPlatillo      = "BPL"

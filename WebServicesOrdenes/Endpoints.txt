@@ -64,6 +64,8 @@ url															desc					params				GET/POST/PUT
 
 ?EXECOP=NOR&MOD=GO&GOKEY=(llave) 							Orden cancelada			GOKEY: Obligatorio  GET
 
+?EXECOP=POR&MOD=GO&GOKEY=(llave) 							Orden pagada			GOKEY: Obligatorio  GET
+
 
 ?EXECOP=APL&MOD=GO&GOKEY=(llave)&GPKEY=(llave)				Agregar un platillo 	GOKEY: Obligatorio	GET
 &GPCAN=(val)&GONES=(desc)&GONPR=(promo)						a la orden 				GPKEY: Obligatorio

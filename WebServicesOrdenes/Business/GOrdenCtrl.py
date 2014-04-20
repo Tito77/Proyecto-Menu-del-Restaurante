@@ -51,8 +51,10 @@ class GOrdenCtrl:
 			self.CambiarEstado(Constantes.Constantes().mGOEstadoCompleto)
 		if self.mOperation == Constantes.Constantes().mGOOperacionIncompleto:
 			self.CambiarEstado(Constantes.Constantes().mGOEstadoIncompleto)
-		if self.mOperation == Constantes.Constantes().mGOOPeracionCancelado:
+		if self.mOperation == Constantes.Constantes().mGOOperacionCancelado:
 			self.CambiarEstado(Constantes.Constantes().mGOEstadoCancelado)
+		if self.mOperation == Constantes.Constantes().mGOOperacionPagado:
+			self.CambiarEstado(Constantes.Constantes.mGOEstadoPagado)
 		if self.mOperation == Constantes.Constantes().mGOOperacionAgregarPlatillo:
 			self.AgregarPlatillo()
 		if self.mOperation == Constantes.Constantes().mGOOperacionBorrarPlatillo:
