@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#7F0000"
+    android:orientation="horizontal" >
+
+    <fragment
+        android:id="@+id/frag_listado"
+        android:name="com.cocina.ordenes.fragments.ListadoFragment"
+        android:layout_width="0dp"
+        android:layout_height="match_parent" 
+        android:layout_weight="1"/>
+
+    <FrameLayout
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF" >
+
+    </FrameLayout>
+	
+    
+    
+    <fragment
+        android:id="@+id/frag_detalle"
+        android:name="com.cocina.ordenes.fragments.DetalleFragment"
+        android:layout_width="0dp"
+        android:layout_height="match_parent" 
+        android:layout_weight="3"/>
+
+</LinearLayout>
