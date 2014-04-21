@@ -42,6 +42,13 @@ public class VerOrdenActivity extends Activity {
 			
 		});
 	}
+	
+	public void actualizarTotal() {
+		
+		TextView viewTotal = (TextView)findViewById(R.id.tvTotOrd);
+		viewTotal.setText(((CustomContext)this.getApplicationContext())._mOrden.getTotal()+"");
+		
+	}
 
 	protected void limpiarOrden() {
 		// TODO Auto-generated method stub

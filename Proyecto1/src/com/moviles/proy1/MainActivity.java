@@ -43,6 +43,10 @@ public class MainActivity extends Activity {
 			startActivity(intOrden);
 			return true;
 		}
+		else if(id == R.id.action_scan)
+		{
+			return true;
+		}
 		return super.onOptionsItemSelected(item);
 	}
 

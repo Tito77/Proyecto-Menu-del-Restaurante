@@ -47,7 +47,7 @@ public class CustomContext extends Application {
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 	    StrictMode.setThreadPolicy(policy);
 	    
-	    _getMesa = new HttpGet("http://solid-clarity-553.appspot.com/?EXECOP=SEL&MOD=GT");
+	    _getMesa = new HttpGet("http://infra-oath-557.appspot.com/?EXECOP=SEL&MOD=GT");
 	    _getMesa.setHeader("content-type","application/json");
 	    
 	    llaveMesa = getMesaKey(_getMesa);
@@ -112,7 +112,7 @@ public class CustomContext extends Application {
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 	    StrictMode.setThreadPolicy(policy);
 		
-		HttpGet _getOrden2 = new HttpGet("http://solid-clarity-553.appspot.com/?EXECOP=INS&MOD=GO&GOTOT="+this._mOrden.getTotal()+"&GTKEY="+llaveMesa);
+		HttpGet _getOrden2 = new HttpGet("http://infra-oath-557.appspot.com/?EXECOP=INS&MOD=GO&GOTOT="+this._mOrden.getTotal()+"&GTKEY="+llaveMesa);
 	    _getOrden2.setHeader("content-type", "application/json");
 		String llave = new String();
 		
