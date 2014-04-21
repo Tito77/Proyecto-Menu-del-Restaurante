@@ -40,3 +40,4 @@ class Constantes:
 	mGOOperacionSeleccionarPlatillo = "SPL"
 
 	mGOOperacionOrdenesDia = "SOD"
+	mGOOperacionOrdenesPorEstado = "SPE"

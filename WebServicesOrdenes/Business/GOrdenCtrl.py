@@ -63,6 +63,8 @@ class GOrdenCtrl:
 			self.SeleccionarPlatillos()
 		if self.mOperation == Constantes.Constantes().mGOOperacionOrdenesDia:
 			self.SeleccionarOrdenesDelDia()
+		if self.mOperation == Constantes.Constantes().mGOOperacionOrdenesPorEstado:
+			self.SeleccionarOrdenesPorEstado()
 
 
 	def Insert(self):
@@ -212,6 +214,20 @@ class GOrdenCtrl:
 			localtime = localtime - datetime.timedelta(hours=6)
 			logging.debug(tmpstmp)
 			if tmpstmp.date().strftime("%Y%m%d") == localtime.strftime("%Y%m%d"):
+				lstOrdens.append(COrden.COrden(str(recOrden.mTotal),str(recOrden.mEstadoServido),str(recOrden.mTMPSTMP),str(recOrden.mKeyMesa),str(recOrden.key.id())).jsonSerialize())
+		self.mReturnValue = lstOrdens
+
+	def SeleccionarOrdenesPorEstado(self):
+		lstOrdens = []
+		keyValue = str(self.mRequest.get('GOKEY'))
+		estadoValue = str(self.mRequest.get('GOEST'))
+		qry = DOrden.DOrden.query()
+		for recOrden in qry:
+			tmpstmp = datetime.datetime.strptime(recOrden.mTMPSTMP, "%Y%m%d %H%M%S")
+			localtime = datetime.datetime.utcnow()
+			localtime = localtime - datetime.timedelta(hours=6)
+			logging.debug(tmpstmp)
+			if tmpstmp.date().strftime("%Y%m%d") == localtime.strftime("%Y%m%d") and str(recOrden.mEstadoServido) == estadoValue:
 				lstOrdens.append(COrden.COrden(str(recOrden.mTotal),str(recOrden.mEstadoServido),str(recOrden.mTMPSTMP),str(recOrden.mKeyMesa),str(recOrden.key.id())).jsonSerialize())
 		self.mReturnValue = lstOrdens
 
