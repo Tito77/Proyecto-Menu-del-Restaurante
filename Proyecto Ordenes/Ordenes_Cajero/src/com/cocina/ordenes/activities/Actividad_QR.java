@@ -43,7 +43,7 @@ public class Actividad_QR extends FragmentActivity {
        
        valor_total=Integer.parseInt(t_Total);
        	TextView textodescuento= (TextView)findViewById(R.id.textTotalDes);
-  	 	textodescuento.setText("El total con descuento es: "+0);
+  	 	textodescuento.setText("El Total-Descuento es:: "+t_Total);
        
 		Button scan= (Button)findViewById(R.id.Button_QR);
         
@@ -74,13 +74,13 @@ public class Actividad_QR extends FragmentActivity {
 	        
 			b_apply.setOnClickListener(new View.OnClickListener() {
              
-	            HttpGet _getOrden;
+	            HttpGet _getOrden,gettotal;
 				HttpClient httpClient = new DefaultHttpClient();
 				String url="";
 				@Override
 	            public void onClick(View v) {
 	                // TODO Auto-generated method stub  
-					url="http://solid-clarity-553.appspot.com/?EXECOP=POR&MOD=GO&GOKEY="+idorden;
+					url="http://infra-oath-557.appspot.com/?EXECOP=POR&MOD=GO&GOKEY="+idorden;
 	            	StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 					    StrictMode.setThreadPolicy(policy);
 					
@@ -89,13 +89,26 @@ public class Actividad_QR extends FragmentActivity {
 					    try{
 					    	HttpResponse resp = httpClient.execute(_getOrden);
 					    	String respStr = EntityUtils.toString(resp.getEntity());
-					    	Log.v("ServicioUpdateEstadon",respStr);
+					    	Log.v("ServicioUpdateEstado",respStr);
+					    	
+					    	
+					    	String url2="http://infra-oath-557.appspot.com/?EXECOP=UPD&MOD=GO&GOKEY="+idorden+"&GOTOT="+valor_total;
+					    	gettotal = new HttpGet(url2);
+					    	gettotal.setHeader("content-type", "application/json");
+					    	HttpResponse resp2 = httpClient.execute(gettotal);
+					    	String respStr2 = EntityUtils.toString(resp2.getEntity());
+					    	Log.v("ServicioUpdateTotal",respStr2);
+					    	
+					    	
 					    }
 					    catch(Exception ex)
 					    {
 					        Log.e("ServicioRest","Error!", ex);
 					    }
 	            	
+					    
+					    
+					    
 	            	
 	            		//Intent i=new Intent(Actividad_QR.this, MainActivity.class);
 				        //startActivity(i);
@@ -148,7 +161,7 @@ public class Actividad_QR extends FragmentActivity {
 	            	 mensaje2.setText("No aplica en la promoción");
 	            	 TextView textodescuento= (TextView)findViewById(R.id.textTotalDes);
 	            	 valor_descuento=valor_total;
-	            	 textodescuento.setText("El total-Descuento es: "+valor_descuento);
+	            	 textodescuento.setText("El Total-Descuento es: "+valor_descuento);
 	             }
              }
              else{//es en otro caso

@@ -46,8 +46,8 @@ HttpClient httpClient = new DefaultHttpClient();
 		ListaconOrdenes= new ArrayList<Orden>();
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 	    StrictMode.setThreadPolicy(policy);
-		//_getOrden = new HttpGet("http://solid-clarity-553.appspot.com/?EXECOP=SOD&MOD=GO");
-	    _getOrden = new HttpGet("http://solid-clarity-553.appspot.com/?EXECOP=SEL&MOD=GO");
+		
+	    _getOrden = new HttpGet("http://infra-oath-557.appspot.com/?EXECOP=SOD&MOD=GO");
 	    _getOrden.setHeader("content-type", "application/json");
     
 	    try
@@ -70,7 +70,7 @@ HttpClient httpClient = new DefaultHttpClient();
 	        for(int i=0;i<lenth_array;i++){
 	        	Orden ElementoOrden = new Gson().fromJson(resp_arrayOrden_JSON.getString(i), Orden.class);
 	        	
-	        	_getMesa = new HttpGet("http://solid-clarity-553.appspot.com/?EXECOP=SEL&MOD=GT&GTKEY="+ElementoOrden.getmKeyMesa());
+	        	_getMesa = new HttpGet("http://infra-oath-557.appspot.com/?EXECOP=SEL&MOD=GT&GTKEY="+ElementoOrden.getmKeyMesa());
 	        	_getMesa.setHeader("content-type", "application/json");
 			        
 			        HttpResponse resp2 = httpClient.execute(_getMesa);
@@ -177,7 +177,7 @@ HttpClient httpClient = new DefaultHttpClient();
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 	    StrictMode.setThreadPolicy(policy);
 		
-	    _getListaPlatillos = new HttpGet("http://solid-clarity-553.appspot.com/?EXECOP=SPL&MOD=GO&GOKEY="+Posicion_mKeyValue);
+	    _getListaPlatillos = new HttpGet("http://infra-oath-557.appspot.com/?EXECOP=SPL&MOD=GO&GOKEY="+Posicion_mKeyValue);
 	    _getListaPlatillos.setHeader("content-type", "application/json");
     
 	    try

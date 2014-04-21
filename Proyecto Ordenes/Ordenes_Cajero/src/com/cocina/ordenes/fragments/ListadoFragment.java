@@ -102,7 +102,7 @@ public class ListadoFragment extends Fragment {
       			public void onSwipeLeft(ListView listView, int [] reverseSortedPositions) {
       				
       				final int pos_item=reverseSortedPositions[0];
-      				String url="http://solid-clarity-553.appspot.com/";
+      				String url="http://infra-oath-557.appspot.com/";
       				final Orden OrdenActual=datos.get(pos_item);
       				String Estado=OrdenActual.getmEstadoServido();
           			/*//Aqui ponemos lo que hara el programa cuando deslizamos un item ha la derecha
@@ -156,12 +156,12 @@ public class ListadoFragment extends Fragment {
       					  public void onClick(DialogInterface dialog, int which) {
       					     //this.finish();
       						  
-      						HttpGet _getOrden;
+      						HttpGet _getOrden,gettotal;
       						HttpClient httpClient = new DefaultHttpClient();
       						String url="";
       						
       						datos.get(pos_item).setmEstadoServido("P");
-      							url="http://solid-clarity-553.appspot.com/?EXECOP=POR&MOD=GO&GOKEY="+OrdenActual.getmKeyValue();
+      							url="http://infra-oath-557.appspot.com/?EXECOP=POR&MOD=GO&GOKEY="+OrdenActual.getmKeyValue();
       			            	StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
       							    StrictMode.setThreadPolicy(policy);
       							
@@ -171,12 +171,20 @@ public class ListadoFragment extends Fragment {
       							    	HttpResponse resp = httpClient.execute(_getOrden);
       							    	String respStr = EntityUtils.toString(resp.getEntity());
       							    	Log.v("ServicioUpdateEstadon",respStr);
+      							    	
+      							    	
+      							    	String url2="http://infra-oath-557.appspot.com/?EXECOP=UPD&MOD=GO&GOKEY="+OrdenActual.getmKeyValue()+"&GOTOT="+OrdenActual.getmTotal();
+      							    	gettotal = new HttpGet(url2);
+      							    	gettotal.setHeader("content-type", "application/json");
+      							    	HttpResponse resp2 = httpClient.execute(gettotal);
+      							    	String respStr2 = EntityUtils.toString(resp2.getEntity());
+      							    	Log.v("ServicioUpdateTotal",respStr2);
       							    }
       							    catch(Exception ex)
       							    {
       							        Log.e("ServicioRest","Error!", ex);
       							    }
-      						  
+      						  adapter.notifyDataSetChanged();
       						  
       						  
       					  
@@ -186,7 +194,7 @@ public class ListadoFragment extends Fragment {
       					
       					dialog.show();
       				}
-      					adapter.notifyDataSetChanged();
+      					
           				Orden Noelementos;
           				if ((listener!=null)&&(datos.isEmpty())) {
           					Noelementos=new Orden();// si ya no hay elementos u ordenes
@@ -209,25 +217,29 @@ public class ListadoFragment extends Fragment {
       			public void onSwipeRight(ListView listView, int [] reverseSortedPositions) {
 	
       				int pos_item=reverseSortedPositions[0];
-      				String url="http://solid-clarity-553.appspot.com/";
+      				String url="http://infra-oath-557.appspot.com/";
       				String Estado=datos.get(pos_item).getmEstadoServido();
           			//Aqui ponemos lo que hara el programa cuando deslizamos un item ha la derecha
           				if(Estado.equals("I")){//si es incompleta la pasa a completa
           					datos.get(pos_item).setmEstadoServido("C");
-          					url="http://solid-clarity-553.appspot.com/?EXECOP=COR&MOD=GO&GOKEY="+datos.get(pos_item).getmKeyValue();
+          					url="http://infra-oath-557.appspot.com/?EXECOP=COR&MOD=GO&GOKEY="+datos.get(pos_item).getmKeyValue();
           				}
           				if(Estado.equals("C")){//si es incompleta la pasa a completa
           					datos.get(pos_item).setmEstadoServido("S");
-          					url="http://solid-clarity-553.appspot.com/?EXECOP=SOR&MOD=GO&GOKEY="+datos.get(pos_item).getmKeyValue();
+          					url="http://infra-oath-557.appspot.com/?EXECOP=SOR&MOD=GO&GOKEY="+datos.get(pos_item).getmKeyValue();
           				}
           				if(Estado.equals("S")){//si es incompleta la pasa a completa
           					datos.get(pos_item).setmEstadoServido("N");
-          					url="http://solid-clarity-553.appspot.com/?EXECOP=NOR&MOD=GO&GOKEY="+datos.get(pos_item).getmKeyValue();
+          					url="http://infra-oath-557.appspot.com/?EXECOP=NOR&MOD=GO&GOKEY="+datos.get(pos_item).getmKeyValue();
           				}	
           				if(Estado.equals("N")){//si es incompleta la pasa a completa
+          					datos.get(pos_item).setmEstadoServido("P");
+          					url="http://infra-oath-557.appspot.com/?EXECOP=POR&MOD=GO&GOKEY="+datos.get(pos_item).getmKeyValue();
+          				}
+          				if(Estado.equals("P")){//si es incompleta la pasa a completa
           					datos.get(pos_item).setmEstadoServido("I");
-          					url="http://solid-clarity-553.appspot.com/?EXECOP=IOR&MOD=GO&GOKEY="+datos.get(pos_item).getmKeyValue();
-          				}	
+          					url="http://infra-oath-557.appspot.com/?EXECOP=IOR&MOD=GO&GOKEY="+datos.get(pos_item).getmKeyValue();
+          				}
           					StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
           				    StrictMode.setThreadPolicy(policy);
           				

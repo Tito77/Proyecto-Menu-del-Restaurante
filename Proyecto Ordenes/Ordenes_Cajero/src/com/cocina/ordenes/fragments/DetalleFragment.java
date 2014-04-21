@@ -184,7 +184,7 @@ public class DetalleFragment extends Fragment {
 	 
 	 HttpClient httpClient = new DefaultHttpClient();
 		HttpGet _getOrden;
-		String url="http://solid-clarity-553.appspot.com/";
+		String url="http://infra-oath-557.appspot.com/";
 		Orden ElementoOrden;
 		JSONObject respOrden_JSON;
     	JSONArray resp_arrayOrden_JSON;
