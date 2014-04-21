@@ -9,6 +9,8 @@
         android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:name="com.moviles.proy1.CustomContext"
@@ -37,6 +39,31 @@
             android:name="com.moviles.proy1.VerOrdenActivity"
             android:label="@string/title_activity_ver_orden" >
         </activity>
+        <activity
+            android:name="com.moviles.proy1.QRActivity"
+            android:label="@string/title_activity_qr" >
+        </activity>
+        
+        <activity android:name="com.google.zxing.client.android.encode.EncodeActivity"
+		          android:stateNotNeeded="true">
+				  <intent-filter>
+				    <action android:name="com.google.zxing.client.android.ENCODE"/>
+				    <category android:name="android.intent.category.DEFAULT"/>
+				  </intent-filter>
+				  <!-- This allows us to handle the Share button in Contacts. -->
+				  <intent-filter>
+				    <action android:name="android.intent.action.SEND"/>
+				    <category android:name="android.intent.category.DEFAULT"/>
+				    <data android:mimeType="text/x-vcard"/>
+				  </intent-filter>
+				  <!-- This allows us to handle sharing any plain text . -->
+				  <intent-filter>
+				    <action android:name="android.intent.action.SEND"/>
+				    <category android:name="android.intent.category.DEFAULT"/>
+				    <data android:mimeType="text/plain"/>
+				  </intent-filter>
+		</activity>
+        
     </application>
 
 </manifest>

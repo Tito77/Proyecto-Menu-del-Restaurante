@@ -180,7 +180,7 @@ public void enviarOrden(String sLlave) {
 			String sPromo = pxoTemp.getmNotaPromocion();
 			
 			HttpGet _getOrden = new HttpGet(
-					"http://solid-clarity-553.appspot.com/?EXECOP=APL&MOD=GO&GOKEY="+_mOrden.getLlave()
+					"http://infra-oath-557.appspot.com/?EXECOP=APL&MOD=GO&GOKEY="+_mOrden.getLlave()
 					+"&GPKEY="+sLlaveP
 					+"&GPCAN="+sCant
 					+"&GONES="+sNota

@@ -9,5 +9,6 @@
     <string name="title_activity_info_menu">Platillos del menú</string>
     <string name="action_ordenar">Ver orden</string>
     <string name="title_activity_ver_orden">VerOrdenActivity</string>
+    <string name="title_activity_qr">QRActivity</string>
 
 </resources>

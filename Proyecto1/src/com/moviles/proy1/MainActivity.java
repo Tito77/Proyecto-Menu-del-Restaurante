@@ -45,6 +45,8 @@ public class MainActivity extends Activity {
 		}
 		else if(id == R.id.action_scan)
 		{
+			Intent intQR = new Intent(this, QRActivity.class);
+			startActivity(intQR);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
