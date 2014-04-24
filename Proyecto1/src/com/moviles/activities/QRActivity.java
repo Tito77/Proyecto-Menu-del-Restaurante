@@ -1,9 +1,6 @@
-package com.moviles.proy1;
+package com.moviles.activities;
 
 import com.moviles.proyecto1.R;
-import com.moviles.proyecto1.R.layout;
-import com.moviles.proyecto1.R.menu;
-
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;

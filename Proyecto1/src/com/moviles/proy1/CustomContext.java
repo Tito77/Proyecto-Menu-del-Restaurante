@@ -29,12 +29,13 @@ public class CustomContext extends Application {
 	HttpGet _getMenu, _getPlatillos, _getIngredientes, _getMesa;
 	Menu _mMenu;
 	String llaveOrden, llaveMesa;
-	ArrayList<Platillo> lPlatillos;
-	ArrayList<Menu> lMenus;
+	public ArrayList<Platillo> lPlatillos;
+	public ArrayList<Menu> lMenus;
 	JSONObject respJSON, platillosJSON, ingJSON;
 	JSONArray respJSON2, platillosJSON2, ingJSON2;
-	Orden _mOrden;
+	public Orden _mOrden;
 	
+	@Override
 	public void onCreate()
 	{
 		super.onCreate();

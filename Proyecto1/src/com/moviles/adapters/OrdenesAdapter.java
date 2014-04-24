@@ -1,7 +1,6 @@
-package com.moviles.proy1;
+package com.moviles.adapters;
 
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.moviles.clases.PlatilloXOrden;
+import com.moviles.proy1.CustomContext;
 import com.moviles.proyecto1.R;
 
 public class OrdenesAdapter extends BaseAdapter {

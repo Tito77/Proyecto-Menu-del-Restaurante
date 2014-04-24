@@ -1,4 +1,4 @@
-package com.moviles.proy1;
+package com.moviles.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +7,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.moviles.clases.Platillo;
+import com.moviles.proy1.CustomContext;
 import com.moviles.proyecto1.R;
 
 public class PlatillosAdapter extends BaseAdapter {

@@ -1,5 +1,9 @@
-package com.moviles.proy1;
+package com.moviles.fragments;
 
+
+import com.moviles.activities.InfoMenuActivity;
+import com.moviles.adapters.MenuAdapter;
+import com.moviles.proy1.CustomContext;
 
 import android.app.Activity;
 import android.app.ListFragment;

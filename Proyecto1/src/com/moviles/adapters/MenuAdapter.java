@@ -1,7 +1,7 @@
-package com.moviles.proy1;
+package com.moviles.adapters;
 
 import com.moviles.clases.Menu;
-import com.moviles.clases.Platillo;
+import com.moviles.proy1.CustomContext;
 import com.moviles.proyecto1.R;
 
 import android.view.LayoutInflater;

@@ -1,4 +1,4 @@
-package com.moviles.proy1;
+package com.moviles.adapters;
 
 import java.util.ArrayList;
 

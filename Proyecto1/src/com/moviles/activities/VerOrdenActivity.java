@@ -1,4 +1,4 @@
-package com.moviles.proy1;
+package com.moviles.activities;
 
 import android.app.Activity;
 import android.app.FragmentManager;
@@ -10,6 +10,8 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 import com.moviles.clases.Orden;
+import com.moviles.fragments.ListaOrdenesFragment;
+import com.moviles.proy1.CustomContext;
 import com.moviles.proyecto1.R;
 
 public class VerOrdenActivity extends Activity {

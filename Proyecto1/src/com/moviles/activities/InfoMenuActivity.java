@@ -1,4 +1,4 @@
-package com.moviles.proy1;
+package com.moviles.activities;
 
 import android.app.Activity;
 import android.app.FragmentManager;
@@ -8,45 +8,38 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.moviles.fragments.ListaPlatillosFragment;
 import com.moviles.proyecto1.R;
 
-public class MainActivity extends Activity {
+public class InfoMenuActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		
-		/*StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-	    StrictMode.setThreadPolicy(policy);*/
+		setContentView(R.layout.activity_info_menu);
 		
 		FragmentManager m = getFragmentManager();
 		FragmentTransaction trans = m.beginTransaction();
-		trans.add(R.id.container, new ListaMenuFragment(), "lista");
+		trans.add(R.id.platillosContainer, new ListaPlatillosFragment(), "lista2");
 		trans.commit();
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
+		getMenuInflater().inflate(R.menu.info_menu, menu);
 		return true;
 	}
+	
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		int id = item.getItemId();
-		if(id == R.id.action_ordenar)
+		if(id == R.id.action_ordenar2)
 		{
 			Intent intOrden = new Intent(this, VerOrdenActivity.class);
 			startActivity(intOrden);
-			return true;
-		}
-		else if(id == R.id.action_scan)
-		{
-			Intent intQR = new Intent(this, QRActivity.class);
-			startActivity(intQR);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

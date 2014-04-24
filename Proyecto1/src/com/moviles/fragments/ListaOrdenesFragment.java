@@ -1,4 +1,7 @@
-package com.moviles.proy1;
+package com.moviles.fragments;
+
+import com.moviles.adapters.OrdenesAdapter;
+import com.moviles.proy1.CustomContext;
 
 import android.app.Activity;
 import android.app.ListFragment;

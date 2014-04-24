@@ -1,7 +1,5 @@
 package com.moviles.clases;
 
-import java.util.ArrayList;
-
 public class Menu {
 	
 	private String mNombreMenu, mDescripcion, mFechaInicioAplicacion, mFechaFinalAplicacion, mEstadoAplicacion, mKeyValue;
