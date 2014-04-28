@@ -1,17 +1,19 @@
-package com.cocina.ordenes.adapters;
+package com.cajero.ordenes.adapters;
 
 import java.util.ArrayList;
 
-import com.cocina.ordenes.R;
-import com.cocina.ordenes.estructuras.Orden;
+import com.cajero.ordenes.estructuras.Orden;
+import com.cajero.ordenes.R;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class AdaptadorListaOrdenes extends ArrayAdapter<Orden> {
@@ -29,7 +31,8 @@ public class AdaptadorListaOrdenes extends ArrayAdapter<Orden> {
         this.listaOrden=listaOrden;
     }
 
-    public View getView(int position, View convertView, ViewGroup parent) {
+    @Override
+	public View getView(int position, View convertView, ViewGroup parent) {
     	
     	// Rescatamos cada item del listview y lo inflamos con nuestro layout
     LayoutInflater inflater = context.getLayoutInflater();
@@ -38,7 +41,8 @@ public class AdaptadorListaOrdenes extends ArrayAdapter<Orden> {
  // Definimos los elementos que tiene nuestro layout
     TextView nombre_orden = (TextView)item.findViewById(R.id.orden_item);//este es campo de texto
     TextView numero_mesa = (TextView)item.findViewById(R.id.orden_item_mesa);//este es campo de texto
-    ImageView imagen= (ImageView)item.findViewById(R.id.Estado_imagen);
+   // ImageView imagen= (ImageView)item.findViewById(R.id.Estado_imagen);
+    LinearLayout heat= (LinearLayout)item.findViewById(R.id.LinearLayout_heat);
     
     Orden elemento = listaOrden.get(position);
    
@@ -46,7 +50,7 @@ public class AdaptadorListaOrdenes extends ArrayAdapter<Orden> {
     nombre_orden.setText("Orden");
     numero_mesa.setText("Mesa: #"+elemento.getmNumeroMesa());
    
-    if(elemento.getmEstadoServido().equals("I")){
+    /*if(elemento.getmEstadoServido().equals("I")){
     	imagen.setImageResource(R.drawable.naranja);
     }
     else{
@@ -69,6 +73,35 @@ public class AdaptadorListaOrdenes extends ArrayAdapter<Orden> {
 	    			 else
 	    			 	{
 	    				 imagen.setImageResource(R.drawable.naranja);
+	    			 	}
+    			 }
+    		 }
+    	 }
+    }*/
+    
+    if(elemento.getmEstadoServido().equals("I")){
+    	heat.setBackgroundColor(Color.parseColor("#FF4444"));
+    }
+    else{
+    	 if(elemento.getmEstadoServido().equals("C")){
+    		 heat.setBackgroundColor(Color.parseColor("#FFBB33"));
+    	    }
+    	 else
+    	 {
+    		 if(elemento.getmEstadoServido().equals("S")){
+    			 heat.setBackgroundColor(Color.parseColor("#99CC00"));
+     	    	}
+    		 else{
+    			 if(elemento.getmEstadoServido().equals("N")){
+    				 heat.setBackgroundColor(Color.parseColor("#AA66CC"));
+    	    	    }
+    			 else{
+    				 if(elemento.getmEstadoServido().equals("P")){
+    					 heat.setBackgroundColor(Color.parseColor("#33B5E5"));
+    	     	    	}
+	    			 else
+	    			 	{
+	    				 heat.setBackgroundColor(Color.parseColor("#FF4444"));
 	    			 	}
     			 }
     		 }

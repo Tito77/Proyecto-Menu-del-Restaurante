@@ -1,4 +1,4 @@
-package com.cocina.ordenes.miscelaneas;
+package com.cajero.ordenes.miscelaneas;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 public class SwipeListViewTouchListener implements View.OnTouchListener {
@@ -211,7 +212,7 @@ public class SwipeListViewTouchListener implements View.OnTouchListener {
 	            mVelocityTracker = null;
 	            mDownX = 0;
 	            mDownView = null;
-	            mDownPosition = ListView.INVALID_POSITION;
+	            mDownPosition = AdapterView.INVALID_POSITION;
 	            mSwiping = false;
 	            break;
 	        }

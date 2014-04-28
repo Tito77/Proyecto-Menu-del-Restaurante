@@ -15,8 +15,7 @@
         android:layout_marginLeft="22dp"
         android:layout_marginTop="30dp"
         android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#FFFFFF" />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/cantidades"
@@ -26,8 +25,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="18dp"
         android:text="Medium Text"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#FFFFFF" />
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/descripciones"
@@ -36,8 +34,6 @@
         android:layout_alignLeft="@+id/platillos"
         android:layout_alignRight="@+id/cantidades"
         android:layout_below="@+id/platillos"
-        android:layout_marginTop="14dp"
-        android:text="Las Psitácidas (Psittacidae) son una familia de aves psitaciformes llamadas comúnmente loros o papagayos, e incluye a los guacamayos, las cotorras, los periquitos, los agapornis y formas afines."
-        android:textColor="#FFFFFF" />
+        android:layout_marginTop="14dp" />
 
 </RelativeLayout>

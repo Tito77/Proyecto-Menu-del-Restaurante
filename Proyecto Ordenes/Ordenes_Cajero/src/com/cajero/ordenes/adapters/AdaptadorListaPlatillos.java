@@ -1,10 +1,9 @@
-package com.cocina.ordenes.adapters;
+package com.cajero.ordenes.adapters;
 
 import java.util.ArrayList;
 
-import com.cocina.ordenes.R;
-import com.cocina.ordenes.estructuras.DetalleOrden;
-import com.cocina.ordenes.estructuras.Orden;
+import com.cajero.ordenes.estructuras.DetalleOrden;
+import com.cajero.ordenes.R;
 
 import android.app.Activity;
 import android.support.v4.app.Fragment;
@@ -29,7 +28,8 @@ public class AdaptadorListaPlatillos extends ArrayAdapter<DetalleOrden> {
 	        this.listaPlatillos=listaPlatillos;
 	    }
 
-	    public View getView(int position, View convertView, ViewGroup parent) {
+	    @Override
+		public View getView(int position, View convertView, ViewGroup parent) {
 	    	
 	    	// Rescatamos cada item del listview y lo inflamos con nuestro layout
 	    	 LayoutInflater inflater = context.getLayoutInflater();

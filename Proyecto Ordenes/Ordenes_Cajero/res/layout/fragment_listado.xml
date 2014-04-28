@@ -2,7 +2,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#7F0000"
     tools:context=".ListadoFragment" >
 
     <!-- TODO: Update blank fragment layout -->
@@ -12,8 +11,8 @@
         android:id="@+id/Listado_Ordenes"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="16dp"
-        android:divider="#B0B0B0"
+        android:layout_marginLeft="1dp"
+        android:divider="#FFFFFF"
         android:dividerHeight="1dp" >
     </ListView>
 

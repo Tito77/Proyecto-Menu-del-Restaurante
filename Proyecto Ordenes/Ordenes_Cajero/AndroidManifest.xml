@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.cocina.ordenes"
+    package="com.cajero.ordenes"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -18,7 +18,7 @@
         android:label="@string/aplication_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.cocina.ordenes.activities.MainActivity"
+            android:name="com.cajero.ordenes.activities.MainActivity"
             android:label="@string/aplication_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,12 +27,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.cocina.ordenes.activities.DetalleActivity"
+            android:name="com.cajero.ordenes.activities.DetalleActivity"
             android:label="@string/title_activity_detalle" >
         </activity>
         <activity
-            android:name="com.cocina.ordenes.activities.Actividad_QR"
-            android:label="@string/QR_camara" >
+            android:name="com.cajero.ordenes.activities.Actividad_QR"
+            android:label="@string/QR_camara" 
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize">
         </activity>
         
         <activity

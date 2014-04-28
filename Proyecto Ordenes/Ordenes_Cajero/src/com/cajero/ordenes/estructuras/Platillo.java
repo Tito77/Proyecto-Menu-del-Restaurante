@@ -1,8 +1,16 @@
-package com.cocina.ordenes.estructuras;
+package com.cajero.ordenes.estructuras;
 
 public class Platillo {
 
-	private String mPrecio,mKeyValue,mNombrePlatillo;
+	private String mPrecio,mURLImagen,mKeyValue,mNombrePlatillo;
+
+	public String getmURLImagen() {
+		return mURLImagen;
+	}
+
+	public void setmURLImagen(String mURLImagen) {
+		this.mURLImagen = mURLImagen;
+	}
 
 	public String getmPrecio() {
 		return mPrecio;

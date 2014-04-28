@@ -1,41 +1,28 @@
-package com.cocina.ordenes.fragments;
+package com.cajero.ordenes.fragments;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.cocina.ordenes.R;
-import com.cocina.ordenes.activities.Actividad_QR;
-import com.cocina.ordenes.adapters.AdaptadorListaPlatillos;
-import com.cocina.ordenes.estructuras.DetalleOrden;
-import com.cocina.ordenes.estructuras.ListadeOrdenes;
-import com.cocina.ordenes.estructuras.Orden;
-import com.google.gson.Gson;
+import com.cajero.ordenes.adapters.AdaptadorListaPlatillos;
+import com.cajero.ordenes.estructuras.DetalleOrden;
+import com.cajero.ordenes.estructuras.ListadeOrdenes;
+import com.cajero.ordenes.estructuras.Orden;
+import com.cajero.ordenes.R;
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.
@@ -77,7 +64,7 @@ public class DetalleFragment extends Fragment {
 			Noelementos.setmCantidad("");
 			Noelementos.setmKeyOrden("");
 			Noelementos.setmKeyPlatillo("");
-			Noelementos.setmNombrePlatillo("No hay más Ordenes");
+			Noelementos.setmNombrePlatillo("No hay más ordenes disponibles");
 			Noelementos.setmNotaEspecial("");
 			Noelementos.setmNotaPromocion("");
 
@@ -144,7 +131,7 @@ public class DetalleFragment extends Fragment {
 				Noelementos.setmCantidad("");
 				Noelementos.setmKeyOrden("");
 				Noelementos.setmKeyPlatillo("");
-				Noelementos.setmNombrePlatillo("No hay más Ordenes");
+				Noelementos.setmNombrePlatillo("No hay más ordenes disponibles");
 				Noelementos.setmNotaEspecial("");
 				Noelementos.setmNotaPromocion("");
 				datos=new ArrayList<DetalleOrden>();

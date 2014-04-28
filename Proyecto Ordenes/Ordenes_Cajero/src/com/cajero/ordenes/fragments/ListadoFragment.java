@@ -1,4 +1,4 @@
-package com.cocina.ordenes.fragments;
+package com.cajero.ordenes.fragments;
 
 import java.util.ArrayList;
 
@@ -7,10 +7,6 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -23,18 +19,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-
-import com.cocina.ordenes.R;
-import com.cocina.ordenes.activities.Actividad_QR;
-import com.cocina.ordenes.activities.MainActivity;
-import com.cocina.ordenes.adapters.AdaptadorListaOrdenes;
-import com.cocina.ordenes.estructuras.DetalleOrden;
-import com.cocina.ordenes.estructuras.ListadeOrdenes;
-import com.cocina.ordenes.estructuras.Orden;
-import com.cocina.ordenes.miscelaneas.SwipeListViewTouchListener;
+import com.cajero.ordenes.activities.Actividad_QR;
+import com.cajero.ordenes.adapters.AdaptadorListaOrdenes;
+import com.cajero.ordenes.estructuras.ListadeOrdenes;
+import com.cajero.ordenes.estructuras.Orden;
+import com.cajero.ordenes.miscelaneas.SwipeListViewTouchListener;
+import com.cajero.ordenes.R;
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.
@@ -87,6 +78,7 @@ public class ListadoFragment extends Fragment {
         ListaOrdenes.setAdapter(adapter);//se ejecuta el montaje final ya con los datos
         
         ListaOrdenes.setOnItemClickListener(new OnItemClickListener() {
+			@Override
 			public void onItemClick(AdapterView<?> list, View view, int pos, long id) {
 				if (listener!=null) {
 					listener.onOrdenSeleccionado(

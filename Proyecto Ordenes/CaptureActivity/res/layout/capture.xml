@@ -197,4 +197,13 @@
             android:text="@string/msg_default_status"
             android:textColor="@color/status_text"/>
 
+     <ImageView
+         android:id="@+id/imagecodigo"
+         android:layout_width="90dp"
+         android:layout_height="90dp"
+         android:layout_gravity="right|bottom"
+         android:layout_marginBottom="10dp"
+         android:layout_marginRight="30dp"
+         android:src="@drawable/qr_code_reader" />
+  
 </merge>

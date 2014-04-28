@@ -1,14 +1,11 @@
-package com.cocina.ordenes.activities;
+package com.cajero.ordenes.activities;
 
-import com.cocina.ordenes.R;
-import com.cocina.ordenes.R.layout;
-import com.cocina.ordenes.R.menu;
-import com.cocina.ordenes.fragments.DetalleFragment;
+import com.cajero.ordenes.fragments.DetalleFragment;
+import com.cajero.ordenes.R;
+
 
 import android.os.Bundle;
-import android.app.Activity;
 import android.support.v4.app.FragmentActivity;
-import android.view.Menu;
 
 public class DetalleActivity extends FragmentActivity {
 

@@ -1,4 +1,4 @@
-package com.cocina.ordenes.estructuras;
+package com.cajero.ordenes.estructuras;
 
 public class Orden {
 	

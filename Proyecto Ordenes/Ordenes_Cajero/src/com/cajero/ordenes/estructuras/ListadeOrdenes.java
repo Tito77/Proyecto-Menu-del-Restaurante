@@ -1,8 +1,6 @@
-package com.cocina.ordenes.estructuras;
+package com.cajero.ordenes.estructuras;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -46,7 +44,7 @@ HttpClient httpClient = new DefaultHttpClient();
 		ListaconOrdenes= new ArrayList<Orden>();
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 	    StrictMode.setThreadPolicy(policy);
-		
+	    //_getOrden = new HttpGet("http://infra-oath-557.appspot.com/?EXECOP=SEL&MOD=GO");
 	    _getOrden = new HttpGet("http://infra-oath-557.appspot.com/?EXECOP=SOD&MOD=GO");
 	    _getOrden.setHeader("content-type", "application/json");
     
