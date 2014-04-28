@@ -1,10 +1,3 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <item
-        android:id="@+id/action_scan"
-        android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="@string/action_scan"/>
-    <item android:id="@+id/action_ordenar" android:title="@string/action_ordenar"></item>
-
 </menu>

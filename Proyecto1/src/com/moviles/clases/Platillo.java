@@ -8,7 +8,7 @@ public class Platillo {
 	
 	//"{\n \"mPrecio\": \"\", \n \"mKeyValue\": \"5757334940811264\", \n \"mNombrePlatillo\": \"Arroz Con Camarones\"\n}"
 	
-	private String mNombrePlatillo, mPrecio, mKeyValue;
+	private String mPrecio,mURLImagen,mKeyValue,mNombrePlatillo;
 	private ArrayList<Ingrediente> _lIngredientes;
 	public String get_sNombre() {
 		return mNombrePlatillo;
@@ -33,6 +33,12 @@ public class Platillo {
 	}
 	public void set_lIngredientes(ArrayList<Ingrediente> _lIngredientes) {
 		this._lIngredientes = _lIngredientes;
+	}
+	public String getmURLImagen() {
+		return mURLImagen;
+	}
+	public void setmURLImagen(String mURLImagen) {
+		this.mURLImagen = mURLImagen;
 	}
 	
 	

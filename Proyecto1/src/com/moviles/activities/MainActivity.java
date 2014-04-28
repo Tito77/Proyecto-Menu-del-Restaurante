@@ -5,8 +5,9 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
 import com.moviles.fragments.ListaMenuFragment;
 import com.moviles.proyecto1.R;
@@ -18,39 +19,30 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		/*StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-	    StrictMode.setThreadPolicy(policy);*/
+		setTitle("La Cuchara Feliz");
+		
+		Button ordenButton = (Button)findViewById(R.id.verOrdenButton);
+		ordenButton.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(MainActivity.this, VerOrdenActivity.class);
+				startActivity(intent);
+			}
+		});
+		
+		Button promoButton = (Button)findViewById(R.id.canjearPromoButton);
+		promoButton.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+				startActivity(intent);
+			}
+		});
 		
 		FragmentManager m = getFragmentManager();
 		FragmentTransaction trans = m.beginTransaction();
 		trans.add(R.id.container, new ListaMenuFragment(), "lista");
 		trans.commit();
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item)
-	{
-		int id = item.getItemId();
-		if(id == R.id.action_ordenar)
-		{
-			Intent intOrden = new Intent(this, VerOrdenActivity.class);
-			startActivity(intOrden);
-			return true;
-		}
-		else if(id == R.id.action_scan)
-		{
-			Intent intQR = new Intent(this, LoginActivity.class);
-			startActivity(intQR);
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
 	}
 
 }

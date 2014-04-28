@@ -6,6 +6,8 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.moviles.clases.Platillo;
 import com.moviles.clases.PlatilloXOrden;
@@ -21,6 +23,9 @@ public class AgregarAOrdenActivity extends Activity {
 		
 		int posPlatillo = getIntent().getExtras().getInt("posicion");
 		final Platillo seleccionado = ((CustomContext)getApplicationContext()).lPlatillos.get(posPlatillo);
+		
+		TextView tvNombre = (TextView)findViewById(R.id.tvNombreOrden);
+		tvNombre.setText("Nombre: " + seleccionado.get_sNombre());
 		
 		findViewById(R.id.agregarOrdenButton).setOnClickListener(new OnClickListener(){
 			
@@ -40,6 +45,10 @@ public class AgregarAOrdenActivity extends Activity {
 				platillo.setmNotaEspecial(sNota);
 				platillo.setmPlatillo(seleccionado);
 				insertarPlatillo(platillo);
+				
+				Toast toast = Toast.makeText(AgregarAOrdenActivity.this, "Platillo agregado a la orden", Toast.LENGTH_SHORT);
+				toast.show(); 
+				
 				finish();
 			}
 			

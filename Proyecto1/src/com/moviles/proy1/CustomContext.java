@@ -13,6 +13,7 @@ import org.json.JSONObject;
 import android.app.Application;
 import android.os.StrictMode;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.moviles.clases.Ingrediente;
@@ -34,6 +35,7 @@ public class CustomContext extends Application {
 	JSONObject respJSON, platillosJSON, ingJSON;
 	JSONArray respJSON2, platillosJSON2, ingJSON2;
 	public Orden _mOrden;
+	private static String numMesa = "1";
 	
 	@Override
 	public void onCreate()
@@ -64,9 +66,14 @@ public class CustomContext extends Application {
 		        
 		        respJSON = new JSONObject(respStr);
 		        respJSON2 = respJSON.getJSONArray("RETURNVALUE");
-		        _mMenu = new Gson().fromJson(respJSON2.getString(1), Menu.class);
+		        
+		        for(int i=0;i<respJSON2.length();i++){
+		        	Menu mTemp = new Menu();
+		        	mTemp = new Gson().fromJson(respJSON2.getString(i), Menu.class);
+		        	lMenus.add(mTemp);
+		        }
+		        _mMenu = lMenus.get(1);
 		        Log.v("Menú cargado",_mMenu.get_sDescripcion());
-		        lMenus.add(_mMenu);
 		        
 		        _getPlatillos = new HttpGet("http://modern-door-542.appspot.com/?EXECOP=SPL&MOD=GM&GMKEY="+_mMenu.getmKeyValue());
 		        _getPlatillos.setHeader("content-type", "application/json");
@@ -148,7 +155,7 @@ public class CustomContext extends Application {
 	        for(int i=0; i<mesaJSON2.length(); i++)
 	        {
 	        	Mesa temp = new Gson().fromJson(mesaJSON2.getString(i), Mesa.class);
-	        	if (temp.getmNumeroMesa().equals("1"))
+	        	if (temp.getmNumeroMesa().equals(numMesa))
 	        	{
 	        		llave = temp.getmKeyValue();
 	        		break;
@@ -202,6 +209,8 @@ public void enviarOrden(String sLlave) {
 			catch(Exception e)
 			{
 				Log.e("ServicioRest","Error al enviar orden", e);
+				Toast toast = Toast.makeText(this, "Error al enviar la orden, notifique a un mesero.", Toast.LENGTH_SHORT);
+				toast.show(); 
 			}
 			
 		}

@@ -49,7 +49,7 @@ public class OrdenesAdapter extends BaseAdapter {
 		PlatilloXOrden platilloEnFila = getItem(position);
 		viewNombre.setText(platilloEnFila.getmPlatillo().get_sNombre());
 		viewPrecio.setText("₡"+platilloEnFila.getmPlatillo().get_sPrecio());
-		viewCantidad.setText(platilloEnFila.getmCantidad()+"");
+		viewCantidad.setText("Cantidad: "+platilloEnFila.getmCantidad());
 		fieldNota.setText(platilloEnFila.getmNotaEspecial());
 		
 		root.findViewById(R.id.buttonQuitar).setOnClickListener(new OnClickListener() {

@@ -39,7 +39,7 @@ public class LoginFragment extends Fragment {
 	    View view = inflater.inflate(R.layout.activity_login, container, false);
 	    LoginButton authButton = (LoginButton) view.findViewById(R.id.authButton);
 	    authButton.setFragment(this);
-	    authButton.setReadPermissions(Arrays.asList("user_location", "user_birthday", "user_likes"));
+	    authButton.setReadPermissions(Arrays.asList("user_likes"));
 	    userInfoTextView = (TextView) view.findViewById(R.id.userInfoTextView);
 
 	    return view;
@@ -114,7 +114,8 @@ public class LoginFragment extends Fragment {
 	            null,
 	            HttpMethod.GET,
 	            new Request.Callback() {
-	                public void onCompleted(Response response) {
+	                @Override
+					public void onCompleted(Response response) {
 	                	String respuesta = response.getGraphObject().getProperty("data").toString();
 	                	String resultado = new String();
 	                    if(!respuesta.equals("[]")){

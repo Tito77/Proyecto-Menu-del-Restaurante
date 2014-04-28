@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.moviles.clases.Orden;
 import com.moviles.fragments.ListaOrdenesFragment;
@@ -38,6 +39,10 @@ public class VerOrdenActivity extends Activity {
 				String llave = pedirLLave();
 				enviarOrden(llave);
 				limpiarOrden();
+				
+				Toast toast = Toast.makeText(VerOrdenActivity.this, "Orden enviada!", Toast.LENGTH_SHORT);
+				toast.show(); 
+				
 				finish();
 			}
 			

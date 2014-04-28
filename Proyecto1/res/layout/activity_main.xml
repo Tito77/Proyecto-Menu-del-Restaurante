@@ -28,8 +28,26 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.89" >
+        android:layout_weight="0.69" >
 
     </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/verOrdenButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ver orden" />
+
+        <Button
+            android:id="@+id/canjearPromoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Canjear promoción" />
+
+    </LinearLayout>
 
 </LinearLayout>

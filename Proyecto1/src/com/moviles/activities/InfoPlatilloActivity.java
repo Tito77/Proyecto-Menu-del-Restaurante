@@ -1,10 +1,17 @@
 package com.moviles.activities;
 
+import java.io.InputStream;
+
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -33,6 +40,9 @@ public class InfoPlatilloActivity extends Activity {
 		((TextView)findViewById(R.id.txPrecio)).setText("Precio: ₡"+seleccionado.get_sPrecio());
 		((ListView)findViewById(R.id.listIngredientes)).setAdapter(_adapter);
 		
+		new DownloadImageTask((ImageView) findViewById(R.id.ivImagen))
+        .execute(seleccionado.getmURLImagen());
+		
 		
 		findViewById(R.id.buttonAgregar).setOnClickListener(new OnClickListener(){
 
@@ -45,5 +55,32 @@ public class InfoPlatilloActivity extends Activity {
 		});
 		
 	}
+	
+	private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+		  ImageView bmImage;
+
+		  public DownloadImageTask(ImageView bmImage) {
+		      this.bmImage = bmImage;
+		  }
+
+		  @Override
+		protected Bitmap doInBackground(String... urls) {
+		      String urldisplay = urls[0];
+		      Bitmap mIcon11 = null;
+		      try {
+		        InputStream in = new java.net.URL(urldisplay).openStream();
+		        mIcon11 = BitmapFactory.decodeStream(in);
+		      } catch (Exception e) {
+		          Log.e("Error", e.getMessage());
+		          e.printStackTrace();
+		      }
+		      return mIcon11;
+		  }
+
+		  @Override
+		protected void onPostExecute(Bitmap result) {
+		      bmImage.setImageBitmap(result);
+		  }
+		}
 
 }

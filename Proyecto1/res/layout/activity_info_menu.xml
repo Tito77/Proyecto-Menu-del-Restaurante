@@ -20,8 +20,14 @@
     <FrameLayout
         android:id="@+id/platillosContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-
+        android:layout_height="324dp"
+        android:layout_weight="0.59" >
     </FrameLayout>
+
+    <Button
+        android:id="@+id/verOrden2Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ver orden" />
 
 </LinearLayout>
