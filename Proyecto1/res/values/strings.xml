@@ -11,5 +11,7 @@
     <string name="title_activity_ver_orden">VerOrdenActivity</string>
     <string name="title_activity_qr">QRActivity</string>
     <string name="title_activity_agregar_aorden">AgregarAOrdenActivity</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="app_id">1404139049864742</string>
 
 </resources>
