@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:text="Nombre"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#000000"  />
+        android:textColor="#FFFFFF"  />
     
 
 </LinearLayout>
