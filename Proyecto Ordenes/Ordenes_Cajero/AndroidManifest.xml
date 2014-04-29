@@ -10,8 +10,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -20,11 +20,8 @@
         <activity
             android:name="com.cajero.ordenes.activities.MainActivity"
             android:label="@string/aplication_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            
         </activity>
         <activity
             android:name="com.cajero.ordenes.activities.DetalleActivity"
@@ -32,26 +29,35 @@
         </activity>
         <activity
             android:name="com.cajero.ordenes.activities.Actividad_QR"
-            android:label="@string/QR_camara" 
-            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize">
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:label="@string/QR_camara" >
         </activity>
-        
         <activity
-               android:name="com.google.zxing.client.android.CaptureActivity"
-               android:screenOrientation="landscape"
-               android:configChanges="orientation|keyboardHidden"
-               android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-               android:windowSoftInputMode="stateAlwaysHidden">
-               <intent-filter>
-                  <action android:name="android.intent.action.MAIN"/>
-                  <category android:name="android.intent.category.DEFAULT"/>
-               </intent-filter>
-               <intent-filter>
-                  <action android:name="com.google.zxing.client.android.SCAN"/>
-                  <category android:name="android.intent.category.DEFAULT"/>
-               </intent-filter>
+            android:name="com.google.zxing.client.android.CaptureActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.google.zxing.client.android.SCAN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
-        
+        <activity
+            android:name="com.cajero.ordenes.activities.GetStart"
+            android:label="@string/aplication_name" >
+                        <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
