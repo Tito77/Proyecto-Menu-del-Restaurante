@@ -31,7 +31,7 @@ public class VerOrdenActivity extends Activity {
 		TextView viewTotal = (TextView)findViewById(R.id.tvTotOrd);
 		viewTotal.setText(((CustomContext)this.getApplicationContext())._mOrden.getTotal()+"");
 		
-		findViewById(R.id.buttonOrdenar1).setOnClickListener(new OnClickListener() {
+		findViewById(R.id.buttonOrdenar2).setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {

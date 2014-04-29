@@ -27,7 +27,7 @@ public class AgregarAOrdenActivity extends Activity {
 		TextView tvNombre = (TextView)findViewById(R.id.tvNombreOrden);
 		tvNombre.setText("Nombre: " + seleccionado.get_sNombre());
 		
-		findViewById(R.id.agregarOrdenButton).setOnClickListener(new OnClickListener(){
+		findViewById(R.id.agregarOrdenButton1).setOnClickListener(new OnClickListener(){
 			
 			@Override
 			public void onClick(View v){

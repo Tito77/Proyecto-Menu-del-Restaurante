@@ -15,7 +15,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nombre"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textColor="#00137F"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="30px" />
 
     <TextView
         android:id="@+id/txPrecio"
@@ -37,6 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ingredientes"
+        android:textColor="#00137F"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <LinearLayout
@@ -47,16 +50,18 @@
             android:id="@+id/listIngredientes"
             android:layout_width="436dp"
             android:layout_height="193dp"
+            android:background="#BAC4FF"
             android:layout_weight="0.29" >
 
         </ListView>
 
-        <Button
-            android:id="@+id/buttonAgregar"
+        <ImageButton
+            android:id="@+id/buttonAgregar2"
             android:layout_width="wrap_content"
-            android:layout_height="79dp"
-            android:layout_weight="0.13"
-            android:text="Agregar a orden" />
+            android:layout_height="wrap_content"
+            android:layout_weight="0.24"
+            android:background="#FFFFFF"
+            android:src="@drawable/ic_agregarordenbutton" />
     </LinearLayout>
 
 </LinearLayout>

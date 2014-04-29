@@ -17,7 +17,6 @@ import android.widget.TextView;
 
 import com.moviles.adapters.IngredienteAdapter;
 import com.moviles.clases.Platillo;
-import com.moviles.clases.PlatilloXOrden;
 import com.moviles.proy1.CustomContext;
 import com.moviles.proyecto1.R;
 
@@ -44,7 +43,7 @@ public class InfoPlatilloActivity extends Activity {
         .execute(seleccionado.getmURLImagen());
 		
 		
-		findViewById(R.id.buttonAgregar).setOnClickListener(new OnClickListener(){
+		findViewById(R.id.buttonAgregar2).setOnClickListener(new OnClickListener(){
 
 			@Override
 			public void onClick(View v) {

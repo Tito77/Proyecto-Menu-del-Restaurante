@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.moviles.fragments.ListaMenuFragment;
 import com.moviles.proyecto1.R;
@@ -21,7 +21,7 @@ public class MainActivity extends Activity {
 		
 		setTitle("La Cuchara Feliz");
 		
-		Button ordenButton = (Button)findViewById(R.id.verOrdenButton);
+		ImageButton ordenButton = (ImageButton)findViewById(R.id.verOrdenButton1);
 		ordenButton.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v) {
@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
 			}
 		});
 		
-		Button promoButton = (Button)findViewById(R.id.canjearPromoButton);
+		ImageButton promoButton = (ImageButton)findViewById(R.id.canjearPromoButton1);
 		promoButton.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v) {

@@ -15,7 +15,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Bienvenido!"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
+        android:textColor="#00137F"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="40px" />
 
     <TextView
         android:id="@+id/tvTotal"
@@ -28,6 +30,7 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#BAC4FF"
         android:layout_weight="0.69" >
 
     </FrameLayout>
@@ -36,17 +39,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
-        <Button
-            android:id="@+id/verOrdenButton"
+        <ImageButton
+            android:id="@+id/verOrdenButton1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ver orden" />
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            android:src="@drawable/ic_verordenbutton" />
 
-        <Button
-            android:id="@+id/canjearPromoButton"
+        <ImageButton
+            android:id="@+id/canjearPromoButton1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Canjear promoción" />
+            android:background="#FFFFFF"
+            android:src="@drawable/ic_canjear" />
 
     </LinearLayout>
 

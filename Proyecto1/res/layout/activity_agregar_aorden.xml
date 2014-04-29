@@ -78,11 +78,11 @@
             android:inputType="textMultiLine" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/agregarOrdenButton"
-        android:layout_width="199dp"
+    <ImageButton
+        android:id="@+id/agregarOrdenButton1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Agregar a orden"
-        android:textSize="16.5sp" />
+        android:background="#FFFFFF"
+        android:src="@drawable/ic_agregarordenbutton" />
 
 </LinearLayout>

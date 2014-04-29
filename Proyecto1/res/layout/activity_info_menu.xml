@@ -15,19 +15,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Seleccione su platillo"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textColor="#00137F"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="40px" />
 
     <FrameLayout
         android:id="@+id/platillosContainer"
         android:layout_width="match_parent"
         android:layout_height="324dp"
+        android:background="#BAC4FF"
         android:layout_weight="0.59" >
     </FrameLayout>
 
-    <Button
-        android:id="@+id/verOrden2Button"
+    <ImageButton
+        android:id="@+id/verOrdenMenuButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ver orden" />
+        android:background="#FFFFFF"
+        android:src="@drawable/ic_verordenbutton" />
 
 </LinearLayout>

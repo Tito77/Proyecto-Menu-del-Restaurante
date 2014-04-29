@@ -52,7 +52,7 @@ public class OrdenesAdapter extends BaseAdapter {
 		viewCantidad.setText("Cantidad: "+platilloEnFila.getmCantidad());
 		fieldNota.setText(platilloEnFila.getmNotaEspecial());
 		
-		root.findViewById(R.id.buttonQuitar).setOnClickListener(new OnClickListener() {
+		root.findViewById(R.id.buttonQuitar2).setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {

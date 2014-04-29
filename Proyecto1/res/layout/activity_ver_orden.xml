@@ -15,12 +15,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Orden actual"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textColor="#00137F"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="40px" />
 
     <FrameLayout
         android:id="@+id/ordenesContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#BAC4FF"
         android:layout_weight="0.77" >
 
     </FrameLayout>
@@ -44,10 +47,11 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/buttonOrdenar1"
+    <ImageButton
+        android:id="@+id/buttonOrdenar2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ordenar" />
+        android:background="#FFFFFF"
+        android:src="@drawable/ic_ordenarbutton" />
 
 </LinearLayout>
